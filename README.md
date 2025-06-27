@@ -3,7 +3,7 @@
 Выполнили
 [Бубякина Юлия 3344](https://github.com/bubyashek)
 [Вердин Кирилл 3344](https://github.com/VerdinKirill)
-[Жаворонок Данила 3344](https://github.com/Ledatu)
+[Жаворонок Данила 3344](https://github.com/Ledatu)\
 
 ## Требования
 
