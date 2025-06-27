@@ -1,9 +1,9 @@
 # UI-Тестирование
 
-Выполнили
-[Бубякина Юлия 3344](https://github.com/bubyashek)
-[Вердин Кирилл 3344](https://github.com/VerdinKirill)
-[Жаворонок Данила 3344](https://github.com/Ledatu)\
+Выполнили <br />
+[Бубякина Юлия 3344](https://github.com/bubyashek) <br />
+[Вердин Кирилл 3344](https://github.com/VerdinKirill) <br />
+[Жаворонок Данила 3344](https://github.com/Ledatu) <br />
 
 ## Требования
 
