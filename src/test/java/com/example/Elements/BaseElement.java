@@ -4,10 +4,11 @@ import java.lang.reflect.UndeclaredThrowableException;
 import java.time.Duration;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.ex.ElementNotFound;  // Add this import
+import com.codeborne.selenide.ex.ElementNotFound;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
+//Класс базового элемента, от которого наследуются другие элементы
 public class BaseElement {
     protected static final int WAIT_SECONDS = 10;
     protected final SelenideElement baseElement;

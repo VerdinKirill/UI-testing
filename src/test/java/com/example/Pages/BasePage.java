@@ -4,6 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
+//Класс базовой страницы, взаимодействует с элементами страницы
 public class BasePage {
 	private static final String BASE_ELEMENT_XPATH = "//div[contains(@name,'%s')]";
 

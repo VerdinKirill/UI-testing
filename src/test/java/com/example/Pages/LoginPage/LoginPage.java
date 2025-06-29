@@ -3,8 +3,10 @@ package com.example.Pages.LoginPage;
 import com.example.Elements.Button.Button;
 import com.example.Elements.Input.Input;
 import com.example.Pages.BasePage;
-import com.example.Elements.Text.Text;;
+import com.example.Elements.Text.Text;
 
+
+//LoginPage, насследуется от BasePage, используется для взаимодействия с инпутами и кнопками в модалке для Авторизации
 public class LoginPage extends BasePage {
     // Define input fields and button
     private final Input usernameInput = Input.byId("email");
@@ -13,26 +15,19 @@ public class LoginPage extends BasePage {
     private final Text incorrectPasswordText = Text.byId("password-error");
 
     public LoginPage() {
-        super(LoginPage.class, "//*[@id=\"__PWS_ROOT__\"]/div[1]/div[3]/div/div/div/div/div"); // Assume //
-                                                                                               // name="login-container"
+        super(LoginPage.class, "//*[@id=\"__PWS_ROOT__\"]/div[1]/div[3]/div/div/div/div/div");
     }
 
+    //Вводит логин и пароль, нажимает на кнопку войти и возвращает новую страницу (чаще всего mainPage)
     public <T extends BasePage> T login(String username, String password, Class<T> nextPageClass) {
-        // loginModalButton.click();
         usernameInput.fill(username);
         passwordInput.fill(password);
-        System.out.printf("%s\n", loginButton.isDisplayed() ? "true" : "false");
-
         loginButton.click();
-        try {
-
-            Thread.sleep(10000);
-        } catch (IllegalArgumentException | InterruptedException error) {
-
-        }
-        return page(nextPageClass); // Navigate to the next page (e.g., DashboardPage)
+        return page(nextPageClass);
     }
 
+
+    //Проверяет, появилось ли сообщение об ошибке
     public boolean checkIncorrectMessage() {
         return incorrectPasswordText.isDisplayed();
     }

@@ -3,6 +3,7 @@ package com.example.Pages.MainPage;
 import com.example.Elements.MansoryContainer.MansoryContainer;
 import com.example.Pages.BasePage;
 
+//Класс главной страницы, где уже есть картинки, насследуется от BasePage
 
 public class MainPage extends BasePage {
 	private final MansoryContainer mansoryContainer = MansoryContainer.byClass("masonryContainer");

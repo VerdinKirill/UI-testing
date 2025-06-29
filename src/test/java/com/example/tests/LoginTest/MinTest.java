@@ -1,9 +1,8 @@
+//Простой тест, чтобы вообще понять работает ли сборка или нет, расскомитьте @Test
+
 package com.example.tests.LoginTest;
 
-import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.Configuration;
-// import com.codeborne.selenide.Selenide;
-// import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
