@@ -3,6 +3,8 @@ package com.example.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -10,7 +12,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
-public class SampleTest {
+public class SampleTest2 {
 
     @BeforeAll
     static void setup() {
