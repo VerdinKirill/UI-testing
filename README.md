@@ -24,7 +24,7 @@ mvn clean test
 
 ## Распределение задач
 
-Система тестирования: Pinterest[Pinterest]()<br />
+Система тестирования: [Pinterest](https://ru.pinterest.com)<br />
 
 **Вердин Кирилл**
 
