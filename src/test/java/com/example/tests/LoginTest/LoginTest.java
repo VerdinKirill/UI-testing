@@ -1,16 +1,15 @@
 package com.example.tests.LoginTest;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import com.example.tests.*;
 import com.example.Pages.LoginPage.LoginPage;
 import com.example.Pages.MainPage.MainPage;
 import com.example.Pages.StartPage.StartPage;
+import com.example.tests.BaseTest;
+
+import io.github.cdimascio.dotenv.Dotenv;
 
 //Класс LoginTest, насследуется от класса BaseTest
 //Открывает страницу пинтереста, затем подгружает из .env логин и пароли (вы должны самостоятельно ввести логин и пароль в .env в переменные с такими же названиями)
@@ -22,7 +21,7 @@ public class LoginTest extends BaseTest {
 		Dotenv dotenv = Dotenv.load();
 		String login = dotenv.get("USER_LOGIN");
 		String password = dotenv.get("USER_PASSWORD");
-		String fakePassword = dotenv.get("FAKE_PASSWORD");
+		String fakePassword = "aboba";
 
 		//тут скорее всего нужно сделать что-то по типу openStartPage() а не через new StartPage() но я не совсем уверен куда девать open(), в тест или в page
 		StartPage startPage = new StartPage(); 

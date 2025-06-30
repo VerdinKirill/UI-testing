@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.qameta.allure.selenide.AllureSelenide;
 
-//Класс BaseTest, от него насследуются другие классы Тестов
+//Класс BaseTest, от него наследуются другие классы Тестов
 public class BaseTest {
 
     //Перед каждым тестом происходит настройка конфигурации
@@ -21,7 +21,7 @@ public class BaseTest {
 
         Configuration.browser = "chrome";
         Configuration.browserSize = "1280x720";
-        Configuration.pageLoadStrategy = "eager"; //пинтерест ассинхроно очень много вещей подгружает и чтобы это не ждать 'normal' заменили на 
+        Configuration.pageLoadStrategy = "eager"; //пинтерест асинхронно очень много вещей подгружает и чтобы это не ждать 'normal' заменили на
         Configuration.timeout = 100000;
         Configuration.pageLoadTimeout = 60000;
         Configuration.baseUrl = "https://ru.pinterest.com";

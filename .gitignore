@@ -1,3 +1,7 @@
 target/*
 build/*
 .env
+.idea/
+.vscode/
+allure-results/
+Checklist.pages
