@@ -3,41 +3,80 @@ package com.example.tests.LoginTest;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.open;
+import com.example.Pages.BasePage;
 import com.example.Pages.LoginPage.LoginPage;
 import com.example.Pages.MainPage.MainPage;
-import com.example.Pages.StartPage.StartPage;
 import com.example.tests.BaseTest;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-//Класс LoginTest, насследуется от класса BaseTest
-//Открывает страницу пинтереста, затем подгружает из .env логин и пароли (вы должны самостоятельно ввести логин и пароль в .env в переменные с такими же названиями)
-//затем открывает модал с логином и паролем (но я не уверен опять же, это считать страницей или составным элементом, если второе, то там относительно быстро можно поменять)
+/**
+ * Тестовый класс для проверки функциональности аутентификации.
+ * Проверяет сценарии входа с неверными и верными учетными данными.
+ */
 public class LoginTest extends BaseTest {
-	@Test
-	public void successfulLogin() {
-		open("/");
-		Dotenv dotenv = Dotenv.load();
-		String login = dotenv.get("USER_LOGIN");
-		String password = dotenv.get("USER_PASSWORD");
-		String fakePassword = "aboba";
+	private static final String FAKE_PASSWORD = "aboba";
+	private static final String INCORRECT_FORMAT_EMAIL = "aaaa";
+	private String validLogin;
+	private String validPassword;
 
-		//тут скорее всего нужно сделать что-то по типу openStartPage() а не через new StartPage() но я не совсем уверен куда девать open(), в тест или в page
-		StartPage startPage = new StartPage(); 
-		LoginPage loginPage = startPage.openLoginModal(LoginPage.class);
-		//попытка ввести неправильный пароль, должно появиться сообщение
-		loginPage.login(login, fakePassword, MainPage.class);
-		assertTrue(loginPage.checkIncorrectMessage());
-		//попытка ввести правильный пароль
-		MainPage mainPage = loginPage.login(login, password, MainPage.class);
+	@Test
+	public void checkAuth() {
+		initTestData();
+		LoginPage.open().openLoginModal(LoginPage.class);
+		shouldShowErrorWhenInvalidFormatEmail();
+		shouldShowErrorWhenInvalidPassword();
+		shouldSuccessfullyLoginWithValidCredentials();
+	}
+
+	/**
+	 * Инициализация тестовых данных.
+	 * Загружает учетные данные из .env файла.
+	 */
+	protected void initTestData() {
+		Dotenv dotenv = Dotenv.load();
+		validLogin = dotenv.get("USER_LOGIN");
+		validPassword = dotenv.get("USER_PASSWORD");
+	}
+
+	/**
+	 * Проверяет сценарий входа с неверным паролем.
+	 * Ожидает появление сообщения об ошибке.
+	 */
+	private void shouldShowErrorWhenInvalidPassword() {
+		LoginPage loginPage = performLogin(validLogin, FAKE_PASSWORD, LoginPage.class);
+		assertTrue(loginPage.checkIsIncorrectPasswordMessageDisplayed());
+	}
+
+	/**
+	 * Проверяет сценарий входа с неверным email неверного формата.
+	 * Ожидает появление сообщения об ошибке.
+	 */
+	private void shouldShowErrorWhenInvalidFormatEmail() {
+		LoginPage loginPage = performLogin(INCORRECT_FORMAT_EMAIL, FAKE_PASSWORD, LoginPage.class);
+		assertTrue(loginPage.checkIsIncorrectEmailMessageDisplayed());
+	}
+
+	/**
+	 * Проверяет сценарий входа с верными параметрами входа.
+	 * Ожидает выполнение аутентификации и прогрузку главной страницы.
+	 */
+	private void shouldSuccessfullyLoginWithValidCredentials() {
+		MainPage mainPage = performLogin(validLogin, validPassword, MainPage.class);
 		assertTrue(mainPage.isDisplayed());
 	}
 
-	// @Test
-	// public void failedLogin() {
-	// LoginPage loginPage = new LoginPage();
-	// loginPage.login("wrong", "credentials", LoginPage.class);
-	// assertThat(loginPage.getErrorMessage()).contains("Invalid credentials");
-	// }
+	/**
+	 * Выполняет полный процесс аутентификации.
+	 * 
+	 * @param username      логин пользователя
+	 * @param password      пароль пользователя
+	 * @param nextPageClass класс страницы
+	 * @return экземпляр класса страницы
+	 */
+	private <T extends BasePage> T performLogin(String login, String password, Class<T> nextPageClass) {
+		return LoginPage.open().enterLogin(login, LoginPage.class).enterPassword(password, LoginPage.class)
+				.clickLoginButton(nextPageClass);
+	}
+
 }

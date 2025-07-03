@@ -4,37 +4,71 @@ import org.openqa.selenium.Keys;
 
 import com.example.Elements.BaseElement;
 
-//Input - класс насследник от BaseElement
-//Является плашкой, куда мы вводим текст
+/**
+ * Класс для работы с элементами типа "поле ввода".
+ * Предоставляет методы для поиска полей ввода по различным атрибутам
+ * и выполнения действий над ними.
+ */
 public class Input extends BaseElement {
     private static final String ID_XPATH = "//input[@id='%s']";
     private static final String NAME_XPATH = "//input[@name='%s']";
     private static final String CLASS_XPATH = "//input[@class='%s']";
 
+    /**
+     * Конструктор класса.
+     * 
+     * @param xpath шаблон XPath для поиска элемента
+     * @param param параметр для подстановки в шаблон XPath
+     */
     private Input(String xpath, String param) {
         super(xpath, param);
     }
 
-    // метод для того, чтобы очистить текст, а потом вставить свой текст в инпут
-    public void fill(String value) {
-        // baseElement.clear() не работает :(
-        // не особо безопасная штука наверное ниже, но придумать что-то другое я не смог
+    /**
+     * Очищает поле ввода.
+     */
+    public void clear() {
         while (!baseElement.getAttribute("value").equals("")) {
             baseElement.sendKeys(Keys.BACK_SPACE);
         }
+    }
+
+    /**
+     * Вводит указанное значение в поле ввода.
+     * 
+     * @param value значение для ввода
+     */
+    public void fill(String value) {
+        clear();
         baseElement.sendKeys(value);
     }
-    //получение элемента инпута по айди
+
+    /**
+     * Находит поле ввода по идентификатору.
+     * 
+     * @param id идентификатор поля ввода
+     * @return экземпляр класса Input
+     */
     public static Input byId(String id) {
         return new Input(ID_XPATH, id);
     }
 
-    //получение элемента инпута по имени
+    /**
+     * Находит поле ввода по имени.
+     * 
+     * @param name имя поля ввода
+     * @return экземпляр класса Input
+     */
     public static Input byName(String name) {
         return new Input(NAME_XPATH, name);
     }
 
-    //получение элемента инпута по названию класса
+    /**
+     * Находит поле ввода по названию класса.
+     * 
+     * @param className название класса
+     * @return экземпляр класса Input
+     */
     public static Input byClass(String text) {
         return new Input(CLASS_XPATH, text);
     }

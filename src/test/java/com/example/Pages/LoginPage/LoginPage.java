@@ -1,34 +1,112 @@
 package com.example.Pages.LoginPage;
 
-import com.example.Elements.Button.Button;
-import com.example.Elements.Input.Input;
 import com.example.Pages.BasePage;
-import com.example.Elements.Text.Text;
 
+import com.example.Elements.Button.Button;
+import com.example.Elements.LoginModal.LoginModal;
 
-//LoginPage, насследуется от BasePage, используется для взаимодействия с инпутами и кнопками в модалке для Авторизации
+/**
+ * Страница аутентификации пользователя.
+ * Предоставляет методы для взаимодействия с элементами входа.
+ */
 public class LoginPage extends BasePage {
-    // Define input fields and button
-    private final Input usernameInput = Input.byId("email");
-    private final Input passwordInput = Input.byId("password");
-    private final Button loginButton = Button.byType("submit");
-    private final Text incorrectPasswordText = Text.byId("password-error");
+    private static final String LOGIN_BUTTON_XPATH = "//*[@id=\"__PWS_ROOT__\"]/div[1]/div[1]/div[2]/div/div[2]/div[2]/button";
+    private static final String PAGE_VALIDATION_XPATH = "//*[@id=\"fullpage\"]";
 
+    private final Button loginModalButton = Button
+            .byXPath(LOGIN_BUTTON_XPATH);
+    private final LoginModal loginModal = LoginModal.byAriaLabel("modal");
+
+    /**
+     * Конструктор класса.
+     * Инициализирует страницу с валидационным XPath.
+     */
     public LoginPage() {
-        super(LoginPage.class, "//*[@id=\"__PWS_ROOT__\"]/div[1]/div[3]/div/div/div/div/div");
+        super(LoginPage.class, PAGE_VALIDATION_XPATH);
     }
 
-    //Вводит логин и пароль, нажимает на кнопку войти и возвращает новую страницу (чаще всего mainPage)
-    public <T extends BasePage> T login(String username, String password, Class<T> nextPageClass) {
-        usernameInput.fill(username);
-        passwordInput.fill(password);
-        loginButton.click();
+    /**
+     * Открывает модальное окно аутентификации.
+     * 
+     * @return текущий экземпляр страницы
+     */
+    public <T extends BasePage> T openLoginModal(Class<T> nextPageClass) {
+        System.out.print(loginModalButton.isDisplayed());
+        loginModalButton.click();
         return page(nextPageClass);
     }
 
-
-    //Проверяет, появилось ли сообщение об ошибке
-    public boolean checkIncorrectMessage() {
-        return incorrectPasswordText.isDisplayed();
+    /**
+     * Проверяет отображение модального окна аутентификации.
+     * 
+     * @return true если модальное окно отображается, иначе false
+     */
+    public boolean isLoginModalDisplayed() {
+        return loginModal.isDisplayed();
     }
+
+    public boolean checkIsLoginModalDisplayed() {
+        return loginModal.isDisplayed();
+    }
+
+    /**
+     * Вводит логин в поле ввода.
+     * 
+     * @param login логин пользователя
+     * @return текущий экземпляр страницы
+     */
+    public <T extends BasePage> T enterLogin(String login, Class<T> nextPageClass) {
+        loginModal.enterTextInLoginInput(login);
+        return page(nextPageClass);
+    }
+
+    /**
+     * Вводит пароль в поле ввода.
+     * 
+     * @param password пароль пользователя
+     * @return текущий экземпляр страницы
+     */
+    public <T extends BasePage> T enterPassword(String password, Class<T> nextPageClass) {
+        loginModal.enterTextInPasswordInput(password);
+        return page(nextPageClass);
+    }
+
+    /**
+     * Нажимает кнопку входа.
+     * 
+     * @return экземпляр главной страницы
+     */
+    public <T extends BasePage> T clickLoginButton(Class<T> nextPageClass) {
+        loginModal.clickLoginButton();
+        return page(nextPageClass);
+    }
+
+    /**
+     * Проверяет отображение сообщения о неверном пароле.
+     * 
+     * @return true если сообщение отображается, иначе false
+     */
+    public boolean checkIsIncorrectPasswordMessageDisplayed() {
+        return loginModal.checkIsDisplayedIncorrectPasswordText();
+    }
+
+    /**
+     * Проверяет отображение сообщения о неверном формате email.
+     * 
+     * @return true если сообщение отображается, иначе false
+     */
+    public boolean checkIsIncorrectEmailMessageDisplayed() {
+        return loginModal.checkIsDisplayedIncorrectEmailFormatText();
+    }
+
+    /**
+     * Открывает страницу аутентификации.
+     * 
+     * @return экземпляр страницы аутентификации
+     */
+
+    public static LoginPage open() {
+        return new LoginPage();
+    }
+
 }
