@@ -1,6 +1,6 @@
-package com.example.Elements.Button;
+package com.example.elements.Button;
 
-import com.example.Elements.BaseElement;
+import com.example.elements.BaseElement;
 
 /**
  * Класс для работы с элементами типа "кнопка".

@@ -3,9 +3,9 @@ package com.example.tests.LoginTest;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
-import com.example.Pages.BasePage;
-import com.example.Pages.LoginPage.LoginPage;
-import com.example.Pages.MainPage.MainPage;
+import com.example.pages.BasePage;
+import com.example.pages.LoginPage;
+import com.example.pages.MainPage;
 import com.example.tests.BaseTest;
 
 import io.github.cdimascio.dotenv.Dotenv;

@@ -1,6 +1,6 @@
-package com.example.Elements.MansoryContainer;
+package com.example.elements.MansoryContainer;
 
-import com.example.Elements.BaseElement;
+import com.example.elements.BaseElement;
 
 
 //Mansory container - наследуется от BaseElement

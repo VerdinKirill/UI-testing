@@ -1,8 +1,8 @@
-package com.example.Elements.Input;
+package com.example.elements.Input;
 
 import org.openqa.selenium.Keys;
 
-import com.example.Elements.BaseElement;
+import com.example.elements.BaseElement;
 
 /**
  * Класс для работы с элементами типа "поле ввода".

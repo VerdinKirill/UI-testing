@@ -3,6 +3,8 @@ package com.example.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.example.pages.*;
+
 import io.qameta.allure.selenide.AllureSelenide;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -10,8 +12,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-
-import com.example.Pages.LoginPage.LoginPage;
 
 /**
  * Базовый класс для UI тестов.
@@ -44,12 +44,12 @@ public class BaseTest {
      * @param username логин пользователя
      * @param password пароль пользователя
      */
-    protected void auth(String login, String password) {
+    protected MainPage auth(String login, String password) {
         LoginPage loginPage = LoginPage.open();
         loginPage = loginPage.openLoginModal(LoginPage.class);
         loginPage.enterLogin(login, LoginPage.class);
         loginPage.enterPassword(password, LoginPage.class);
-        loginPage.clickLoginButton(LoginPage.class);
+        return loginPage.clickLoginButton(MainPage.class);
     }
 
     /**

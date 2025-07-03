@@ -1,4 +1,4 @@
-package com.example.Elements;
+package com.example.elements;
 
 import java.lang.reflect.UndeclaredThrowableException;
 import java.time.Duration;

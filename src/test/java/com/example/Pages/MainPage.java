@@ -1,7 +1,6 @@
-package com.example.Pages.MainPage;
+package com.example.pages;
 
-import com.example.Elements.MansoryContainer.MansoryContainer;
-import com.example.Pages.BasePage;
+import com.example.elements.MansoryContainer.MansoryContainer;
 
 //Класс главной страницы, где уже есть картинки, наследуется от BasePage
 

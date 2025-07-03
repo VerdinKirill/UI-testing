@@ -1,9 +1,7 @@
-package com.example.Pages.LoginPage;
+package com.example.pages;
 
-import com.example.Pages.BasePage;
-
-import com.example.Elements.Button.Button;
-import com.example.Elements.LoginModal.LoginModal;
+import com.example.elements.Button.Button;
+import com.example.elements.LoginModal.LoginModal;
 
 /**
  * Страница аутентификации пользователя.
@@ -27,8 +25,9 @@ public class LoginPage extends BasePage {
 
     /**
      * Открывает модальное окно аутентификации.
-     * 
+     * @param nextPageClass класс возращаемой страницы
      * @return текущий экземпляр страницы
+     * @param <T> тип страницы
      */
     public <T extends BasePage> T openLoginModal(Class<T> nextPageClass) {
         System.out.print(loginModalButton.isDisplayed());
@@ -51,9 +50,11 @@ public class LoginPage extends BasePage {
 
     /**
      * Вводит логин в поле ввода.
-     * 
+     *          
      * @param login логин пользователя
+     * @param nextPageClass класс возращаемой страницы
      * @return текущий экземпляр страницы
+     * @param <T> тип страницы
      */
     public <T extends BasePage> T enterLogin(String login, Class<T> nextPageClass) {
         loginModal.enterTextInLoginInput(login);
@@ -63,8 +64,11 @@ public class LoginPage extends BasePage {
     /**
      * Вводит пароль в поле ввода.
      * 
-     * @param password пароль пользователя
+     * @param password      пароль пользователя
+     * @param nextPageClass класс возращаемой страницы
      * @return текущий экземпляр страницы
+     * @param <T> тип страницы
+     * 
      */
     public <T extends BasePage> T enterPassword(String password, Class<T> nextPageClass) {
         loginModal.enterTextInPasswordInput(password);
@@ -72,9 +76,11 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * Нажимает кнопку входа.
      * 
-     * @return экземпляр главной страницы
+     * Нажимает кнопку входа.
+     * @param nextPageClass класс возраща
+        * @return экземпляр главной страницы
+	 * @param <T> тип страницы
      */
     public <T extends BasePage> T clickLoginButton(Class<T> nextPageClass) {
         loginModal.clickLoginButton();
