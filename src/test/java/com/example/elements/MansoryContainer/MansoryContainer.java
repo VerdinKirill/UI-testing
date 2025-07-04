@@ -11,7 +11,7 @@ import io.qameta.allure.Step;
 public class MansoryContainer extends BaseElement {
 	private static final String CLASS_XPATH = "//div[@class='%s']";
 
-	private static final ImagePreview firstImagePreview = ImagePreview.byXpath("//*[@id=\"homefeed\"]/div/div/div/div/div[1]");
+	private static final ImagePreview firstImagePreview = ImagePreview.byXpath("//*[@role=\"listitem\"][1]");
 
 	private MansoryContainer(String xpath, String param) {
 		super(xpath, param);
@@ -21,7 +21,7 @@ public class MansoryContainer extends BaseElement {
 		return firstImagePreview.getHrefOfArticle();
 	}
 
-	@Step("Clicl on Image")
+	@Step("Click on Image")
 	public void clickOnImage() {
 		System.out.println("firstImagePreview");
 
