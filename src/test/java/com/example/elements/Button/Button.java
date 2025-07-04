@@ -12,6 +12,7 @@ public class Button extends BaseElement {
 	private static final String TEXT_XPATH = "//button[contains(text(),'%s')]";
 	private static final String CLASS_XPATH = "//button[@class='%s']";
 	private static final String TYPE_XPATH = "//button[@type='%s']";
+	private static final String ARIA_LABEL_XPATH = "//button[@aria-label='%s']";
 
 	/**
 	 * Конструктор класса.
@@ -79,4 +80,15 @@ public class Button extends BaseElement {
 	public static Button byXPath(String xpath) {
 		return new Button("%s", xpath);
 	}
+
+	/**
+	 * Находит кнопку по aria-label.
+	 * 
+	 * @param ariaLabel тип кнопки
+	 * @return экземпляр класса Button
+	 */
+	public static Button byAriaLabel(String ariaLabel) {
+		return new Button(ARIA_LABEL_XPATH, ariaLabel);
+	}
+
 }

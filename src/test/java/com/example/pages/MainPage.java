@@ -1,11 +1,12 @@
 package com.example.pages;
 
+import java.time.Duration;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static com.codeborne.selenide.Selenide.Wait;
 import com.example.elements.MansoryContainer.MansoryContainer;
 import com.example.elements.SearchHeader.SearchHeader;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import static com.codeborne.selenide.Selenide.Wait;
-
-import java.time.Duration;
 
 //Класс главной страницы, где уже есть картинки, наследуется от BasePage
 
@@ -20,6 +21,15 @@ public class MainPage extends BasePage {
 	public boolean isDisplayed() {
 		return mansoryContainer.isDisplayed();
 		// return welcomeMessage.exists() && welcomeMessage.isDisplayed();
+	}
+
+	public String getHrefOfFirstImage() {
+		return mansoryContainer.getHrefOfFirstImage();
+	}
+
+	public <T extends BasePage> T clickOnFirstImage(Class<T> className) {
+		mansoryContainer.clickOnImage();
+		return page(className);
 	}
 
 	public void openSearchBar() {
@@ -42,3 +52,4 @@ public class MainPage extends BasePage {
 		searchHeader.clickAccountButton();
 	}
 }
+
