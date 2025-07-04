@@ -15,4 +15,13 @@ public class MainPage extends BasePage {
 		return mansoryContainer.isDisplayed();
 		// return welcomeMessage.exists() && welcomeMessage.isDisplayed();
 	}
+
+	public String getHrefOfFirstImage() {
+		return mansoryContainer.getHrefOfFirstImage();
+	}
+
+	public <T extends BasePage> T clickOnFirstImage(Class<T> className) {
+		mansoryContainer.clickOnImage();
+		return page(className);
+	}
 }

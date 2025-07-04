@@ -1,7 +1,9 @@
 package com.example.elements.MansoryContainer;
 
 import com.example.elements.BaseElement;
+import com.example.elements.ImagePreview.ImagePreview;
 
+import io.qameta.allure.Step;
 
 //Mansory container - наследуется от BaseElement
 //является классом контейнером для всех картинок на MainPage
@@ -9,9 +11,23 @@ import com.example.elements.BaseElement;
 public class MansoryContainer extends BaseElement {
 	private static final String CLASS_XPATH = "//div[@class='%s']";
 
+	private static final ImagePreview firstImagePreview = ImagePreview.byXpath("//*[@id=\"homefeed\"]/div/div/div/div/div[1]");
+
 	private MansoryContainer(String xpath, String param) {
-        super(xpath, param);
-    }
+		super(xpath, param);
+	}
+
+	public String getHrefOfFirstImage() {
+		return firstImagePreview.getHrefOfArticle();
+	}
+
+	@Step("Clicl on Image")
+	public void clickOnImage() {
+		System.out.println("firstImagePreview");
+
+		System.out.println(firstImagePreview.isDisplayed());
+		firstImagePreview.click();
+	}
 
 	public static MansoryContainer byClass(String text) {
 		return new MansoryContainer(CLASS_XPATH, text);

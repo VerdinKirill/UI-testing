@@ -30,7 +30,7 @@ public class LoginPage extends BasePage {
      * @param <T> тип страницы
      */
     public <T extends BasePage> T openLoginModal(Class<T> nextPageClass) {
-        System.out.print(loginModalButton.isDisplayed());
+        // System.out.print(loginModalButton.isDisplayed());
         loginModalButton.click();
         return page(nextPageClass);
     }
