@@ -6,18 +6,22 @@ import com.example.elements.Image.Image;
 
 public class ImagePreview extends BaseElement {
 
-	private final String ALT_IMAGE = "Пин содержит это изображение: ";
 	private static final String ROLE_XPATH = "//div[@role='%s']";
+	private static final String IMG_XPATH_SUFFIX = "//img";
+	private static final String ARTICLE_XPATH_SUFFIX = "//a";
 
-	private final Article article = Article.byAriaLabel("Пин");
-	private final Image image = Image.byAlt(ALT_IMAGE);
+	private final Article article;
+	private final Image image;
 
 	private ImagePreview(String xpath, String param) {
 		super(xpath, param);
+		// Construct child elements using derived XPaths
+		this.image = Image.byXpath(xpath + IMG_XPATH_SUFFIX);
+		this.article = Article.byXpath(xpath + ARTICLE_XPATH_SUFFIX);
 	}
 
 	public void click() {
-		image.click();
+		article.click();
 	}
 
 	public void hover() {
@@ -33,11 +37,11 @@ public class ImagePreview extends BaseElement {
 	}
 
 	public static ImagePreview byRole(String role) {
-		return new ImagePreview(ROLE_XPATH, role);
+		String xpath = String.format(ROLE_XPATH, role);
+		return new ImagePreview(xpath, role);
 	}
 
-		public static ImagePreview byXpath(String xPath) {
+	public static ImagePreview byXpath(String xPath) {
 		return new ImagePreview(xPath, "");
 	}
-
 }

@@ -44,6 +44,20 @@ public class Input extends BaseElement {
     }
 
     /**
+     * Кликает на элемент.
+     */
+    public void click() {
+        baseElement.click();
+    }
+
+    /**
+     * Нажимает Enter для подтверждения.
+     */
+    public void pressEnter() {
+        baseElement.pressEnter();
+    }
+
+    /**
      * Находит поле ввода по идентификатору.
      * 
      * @param id идентификатор поля ввода

@@ -1,6 +1,7 @@
 package com.example.elements.Article;
 
 import com.example.elements.BaseElement;
+import com.example.elements.Image.Image;
 
 public class Article extends BaseElement {
 
@@ -18,9 +19,13 @@ public class Article extends BaseElement {
 	{
 		baseElement.click();
 	}
+
 	public static Article byAriaLabel(String ariaLabel) {
 		return new Article(ARIA_LABEL_XPATH, ariaLabel);
 	}
 
+	public static Article byXpath(String xPath) {
+		return new Article("%s", xPath);
+	}
 
 }
