@@ -1,4 +1,4 @@
-package com.example.Elements.TextArea;
+package com.example.elements.TextArea;
 
 import com.example.elements.BaseElement;
 import org.openqa.selenium.Keys;

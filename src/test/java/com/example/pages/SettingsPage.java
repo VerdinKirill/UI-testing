@@ -1,7 +1,7 @@
 package com.example.pages;
 
-import com.example.Elements.Button.Button;
-import com.example.Elements.TextArea.TextArea;
+import com.example.elements.Button.Button;
+import com.example.elements.TextArea.TextArea;
 import com.example.elements.Input.Input;
 
 public class SettingsPage extends BasePage {

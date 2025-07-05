@@ -1,6 +1,6 @@
 package com.example.pages;
 
-import com.example.Elements.Button.Button;
+import com.example.elements.Button.Button;
 import com.example.elements.Article.Article;
 import com.example.elements.MansoryContainer.MansoryContainer;
 import com.example.elements.SearchHeader.SearchHeader;
