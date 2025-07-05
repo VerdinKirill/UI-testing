@@ -14,6 +14,10 @@ public class Article extends BaseElement {
         return baseElement.getAttribute("href");
     }
 
+    public String getArialabel (){
+        return baseElement.getAttribute("aria-label");
+    }
+
     public void click() {
         baseElement.click();
     }

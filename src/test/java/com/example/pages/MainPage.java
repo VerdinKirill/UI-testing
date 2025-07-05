@@ -48,9 +48,13 @@ public class MainPage extends BasePage {
         Wait().withTimeout(Duration.ofSeconds(10)).until(ExpectedConditions.urlContains(expectedUrlPart));
     }
 
-    public <T extends BasePage> T clickAccountButton(Class<T> className)  {
+    public <T extends BasePage> T clickAccountButton(Class<T> className) {
         searchHeader.clickAccountButton();
-		return page(className);
+        return page(className);
+    }
+
+    public String getNthAriaLabel(int n) {
+        return mansoryContainer.getNthArticleAriaLabel(n);
     }
 
 }

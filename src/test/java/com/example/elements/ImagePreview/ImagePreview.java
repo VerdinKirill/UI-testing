@@ -34,4 +34,8 @@ public class ImagePreview extends BaseElement {
     public String getPreviewName() {
         return h2.getText();
     }
+
+    public String getArticleAriaLabel() {
+        return article.getArialabel();
+    }
 }
