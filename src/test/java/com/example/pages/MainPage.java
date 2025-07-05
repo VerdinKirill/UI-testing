@@ -1,7 +1,9 @@
 package com.example.pages;
 
-import com.example.elements.SearchHeader.SearchHeader;
+import com.example.elements.Button.Button;
+import com.example.elements.Article.Article;
 import com.example.elements.MansoryContainer.MansoryContainer;
+import com.example.elements.SearchHeader.SearchHeader;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
@@ -13,6 +15,9 @@ import static com.codeborne.selenide.Selenide.Wait;
 public class MainPage extends BasePage {
     private final MansoryContainer mansoryContainer = MansoryContainer.byClass("masonryContainer");
     private final SearchHeader searchHeader = SearchHeader.byId("HeaderContent");
+    private final Button settingsModalButton = Button.byAriaLabel("Другие варианты");
+    private final Article settingsArticle = Article.byXpath("//*[@id=\"VerticalNav-MoreOptions-Flyout-item-0\"]/div/a");
+
 
     public MainPage() {
         super(MainPage.class, "//*[@role=main]");
@@ -56,6 +61,16 @@ public class MainPage extends BasePage {
     public String getNthAriaLabel(int n) {
         return mansoryContainer.getNthArticleAriaLabel(n);
     }
+  
+    public void clickSettingsModalButton() {
+        settingsModalButton.click();
+    }
+
+    public <T extends BasePage> T clickSettings(Class<T> className) {
+        settingsArticle.click();
+        return page(className);
+    }
+
 
 }
 
