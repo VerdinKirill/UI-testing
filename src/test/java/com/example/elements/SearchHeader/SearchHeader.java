@@ -1,6 +1,6 @@
 package com.example.elements.SearchHeader;
 
-import com.example.Elements.Button.Button;
+import com.example.elements.Button.Button;
 import com.example.elements.BaseElement;
 import com.example.elements.Input.Input;
 

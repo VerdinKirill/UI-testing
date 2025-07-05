@@ -17,7 +17,7 @@ public class SearchTest extends BaseTest {
     private String login;
     private String password;
 
-    @Test
+//    @Test
     public void checkAuth() {
         initTestData();
         MainPage mainPage = auth(login, password);

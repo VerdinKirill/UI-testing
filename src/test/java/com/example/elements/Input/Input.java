@@ -3,6 +3,8 @@ package com.example.elements.Input;
 import com.example.elements.BaseElement;
 import org.openqa.selenium.Keys;
 
+import java.io.File;
+
 /**
  * Класс для работы с элементами типа "поле ввода".
  * Предоставляет методы для поиска полей ввода по различным атрибутам
@@ -12,6 +14,7 @@ public class Input extends BaseElement {
     private static final String ID_XPATH = "//input[@id='%s']";
     private static final String NAME_XPATH = "//input[@name='%s']";
     private static final String CLASS_XPATH = "//input[@class='%s']";
+    private static final String DATA_TEST_ID_XPATH = "//input[@data-test-id='%s']";
 
     /**
      * Конструктор класса.
@@ -43,6 +46,15 @@ public class Input extends BaseElement {
     }
 
     /**
+     * Вводит указанное значение в поле ввода.
+     *
+     * @param value значение для ввода
+     */
+    public void load(File file) {
+        baseElement.uploadFile(file);
+    }
+
+    /**
      * Кликает на элемент.
      */
     public void click() {
@@ -64,6 +76,16 @@ public class Input extends BaseElement {
      */
     public static Input byId(String id) {
         return new Input(ID_XPATH, id);
+    }
+
+    /**
+     * Находит поле ввода по идентификатору.
+     *
+     * @param id идентификатор поля ввода
+     * @return экземпляр класса Input
+     */
+    public static Input byDataTestId(String id) {
+        return new Input(DATA_TEST_ID_XPATH, id);
     }
 
     /**

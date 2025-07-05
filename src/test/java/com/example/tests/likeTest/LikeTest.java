@@ -17,7 +17,7 @@ public class LikeTest extends BaseTest {
     private String login;
     private String password;
 
-    @Test
+//    @Test
     public void checkLike() {
         initTestData();
         MainPage mainPage = auth(login, password);

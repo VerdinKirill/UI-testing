@@ -1,6 +1,6 @@
-package com.example.Elements.LoginModal;
+package com.example.elements.LoginModal;
 
-import com.example.Elements.Button.Button;
+import com.example.elements.Button.Button;
 import com.example.elements.BaseElement;
 import com.example.elements.Input.Input;
 import com.example.Elements.Text.Text;
