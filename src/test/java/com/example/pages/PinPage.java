@@ -2,11 +2,11 @@ package com.example.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.example.Elements.Button.Button;
-import com.example.Elements.Input.Input;
-import com.example.Elements.likebutton.LikeButton;
+import com.example.elements.Button.Button;
+import com.example.elements.Input.Input;
+import com.example.elements.likebutton.LikeButton;
 //import com.example.Elements.span.Span;
-import com.example.Elements.Image.Image;
+import com.example.elements.Image.Image;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -86,7 +86,6 @@ public class PinPage extends BasePage {
 
     public void loadPhoto(File file) {
         loadPhotoInput.load(file);
-
     }
 
     public void clickDownloadPinButton() {

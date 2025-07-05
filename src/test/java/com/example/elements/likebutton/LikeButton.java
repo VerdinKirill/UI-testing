@@ -1,7 +1,7 @@
-package com.example.Elements.likebutton;
+package com.example.elements.likebutton;
 
-import com.example.Elements.Button.Button;
-import com.example.Elements.path.Path;
+import com.example.elements.Button.Button;
+import com.example.elements.path.Path;
 
 import javax.xml.xpath.XPath;
 

@@ -1,4 +1,4 @@
-package com.example.Elements.Button;
+package com.example.elements.Button;
 
 import com.example.elements.BaseElement;
 

@@ -1,6 +1,6 @@
-package com.example.Elements.Text;
+package com.example.elements.Text;
 
-import com.example.Elements.BaseElement;
+import com.example.elements.BaseElement;
 
 /**
  * Класс длsя работы с текстовыми элементами.

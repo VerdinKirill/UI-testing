@@ -1,7 +1,7 @@
 package com.example.pages;
 
-import com.example.Elements.Button.Button;
-import com.example.Elements.LoginModal.LoginModal;
+import com.example.elements.Button.Button;
+import com.example.elements.LoginModal.LoginModal;
 
 /**
  * Страница аутентификации пользователя.

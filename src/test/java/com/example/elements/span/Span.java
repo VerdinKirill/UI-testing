@@ -1,6 +1,6 @@
-package com.example.Elements.span;
+package com.example.elements.span;
 
-import com.example.Elements.BaseElement;
+import com.example.elements.BaseElement;
 import org.openqa.selenium.Keys;
 
 public class Span extends BaseElement {

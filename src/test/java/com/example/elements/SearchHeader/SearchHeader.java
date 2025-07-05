@@ -1,8 +1,8 @@
 package com.example.elements.SearchHeader;
 
-import com.example.Elements.Button.Button;
-import com.example.Elements.BaseElement;
-import com.example.Elements.Input.Input;
+import com.example.elements.Button.Button;
+import com.example.elements.BaseElement;
+import com.example.elements.Input.Input;
 
 public class SearchHeader extends BaseElement {
     private static final String CLASS_XPATH = "//*[@id='%s']";

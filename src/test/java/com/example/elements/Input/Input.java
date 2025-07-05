@@ -1,6 +1,6 @@
-package com.example.Elements.Input;
+package com.example.elements.Input;
 
-import com.example.Elements.BaseElement;
+import com.example.elements.BaseElement;
 import org.openqa.selenium.Keys;
 
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.example.Elements.path;
+package com.example.elements.path;
 
 public class Path extends com.example.elements.BaseElement {
 
