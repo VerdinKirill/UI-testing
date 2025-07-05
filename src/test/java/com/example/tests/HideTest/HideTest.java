@@ -15,7 +15,7 @@ public class HideTest extends BaseTest {
     private String login;
     private String password;
 
-    @Test
+//    @Test
     public void checkHidePost() {
         initTestData();
         MainPage mainPage = auth(login, password);

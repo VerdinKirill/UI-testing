@@ -6,7 +6,7 @@ import com.example.Elements.Button.Button;
 import com.example.Elements.Input.Input;
 import com.example.Elements.likebutton.LikeButton;
 //import com.example.Elements.span.Span;
-import com.example.elements.Image.Image;
+import com.example.Elements.Image.Image;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -27,8 +27,9 @@ public class PinPage extends BasePage {
     private final LikeButton likeButton = LikeButton.byDataTestId("react-button");
     private final Button downloadPinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-download\"]");
 //    private final Span inputSpan = Span.
-    private final Button choosePhotoButton = Button.byXPath("Выберите фото.");
+    private final Button choosePhotoButton = Button.byAriaLabel("Выберите фото.");
     private final Input loadPhotoInput = Input.byId("photo-upload-input");
+    private final Image loadedImage = Image.byAlt("Фотография");
 
     public PinPage() {
         super(PinPage.class, "//*[@data-test-id=\"closeup-container\"]");
@@ -80,10 +81,12 @@ public class PinPage extends BasePage {
 
     public void clickChoosePhotoButton() {
         choosePhotoButton.click();
+        System.out.println(loadedImage.isDisplayed());
     }
 
     public void loadPhoto(File file) {
         loadPhotoInput.load(file);
+
     }
 
     public void clickDownloadPinButton() {

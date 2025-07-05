@@ -18,10 +18,11 @@ public class CommentTest extends BaseTest {
         initTestData();
         MainPage mainPage = auth(login, password);
         PinPage pinPage = mainPage.clickOnFirstImage(PinPage.class);
-        pinPage.aa();
+//        pinPage.aa();
         pinPage.clickChoosePhotoButton();
         File file = new File(pathToImage);
         pinPage.loadPhoto(file);
+
     }
 
     protected void initTestData() {
