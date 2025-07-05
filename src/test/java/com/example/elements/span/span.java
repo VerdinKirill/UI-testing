@@ -1,19 +1,12 @@
-package com.example.Elements.Input;
+package com.example.Elements.span;
 
 import com.example.Elements.BaseElement;
 import org.openqa.selenium.Keys;
 
-import java.io.File;
-
-/**
- * Класс для работы с элементами типа "поле ввода".
- * Предоставляет методы для поиска полей ввода по различным атрибутам
- * и выполнения действий над ними.
- */
-public class Input extends BaseElement {
-    private static final String ID_XPATH = "//input[@id='%s']";
-    private static final String NAME_XPATH = "//input[@name='%s']";
-    private static final String CLASS_XPATH = "//input[@class='%s']";
+public class Span extends BaseElement {
+    private static final String ID_XPATH = "//span[@id='%s']";
+    private static final String NAME_XPATH = "//span[@name='%s']";
+    private static final String CLASS_XPATH = "//span[@class='%s']";
 
     /**
      * Конструктор класса.
@@ -21,7 +14,7 @@ public class Input extends BaseElement {
      * @param xpath шаблон XPath для поиска элемента
      * @param param параметр для подстановки в шаблон XPath
      */
-    private Input(String xpath, String param) {
+    private Span(String xpath, String param) {
         super(xpath, param);
     }
 
@@ -29,7 +22,7 @@ public class Input extends BaseElement {
      * Очищает поле ввода.
      */
     public void clear() {
-        while (!baseElement.getAttribute("value").equals("")) {
+        while (!baseElement.getAttribute("value").isEmpty()) {
             baseElement.sendKeys(Keys.BACK_SPACE);
         }
     }
@@ -42,15 +35,6 @@ public class Input extends BaseElement {
     public void fill(String value) {
         clear();
         baseElement.sendKeys(value);
-    }
-
-    /**
-     * Вводит указанное значение в поле ввода.
-     *
-     * @param value значение для ввода
-     */
-    public void load(File file) {
-        baseElement.uploadFile(file);
     }
 
     /**
@@ -71,29 +55,29 @@ public class Input extends BaseElement {
      * Находит поле ввода по идентификатору.
      *
      * @param id идентификатор поля ввода
-     * @return экземпляр класса Input
+     * @return экземпляр класса span
      */
-    public static Input byId(String id) {
-        return new Input(ID_XPATH, id);
+    public static Span byId(String id) {
+        return new Span(ID_XPATH, id);
     }
 
     /**
      * Находит поле ввода по имени.
      *
      * @param name имя поля ввода
-     * @return экземпляр класса Input
+     * @return экземпляр класса span
      */
-    public static Input byName(String name) {
-        return new Input(NAME_XPATH, name);
+    public static Span byName(String name) {
+        return new Span(NAME_XPATH, name);
     }
 
     /**
      * Находит поле ввода по названию класса.
      *
      * @param className название класса
-     * @return экземпляр класса Input
+     * @return экземпляр класса span
      */
-    public static Input byClass(String text) {
-        return new Input(CLASS_XPATH, text);
+    public static Span byClass(String text) {
+        return new Span(CLASS_XPATH, text);
     }
 }

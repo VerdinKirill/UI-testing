@@ -1,4 +1,4 @@
-package com.example.elements;
+package com.example.Elements;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;

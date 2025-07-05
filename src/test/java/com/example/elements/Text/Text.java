@@ -1,9 +1,9 @@
-package com.example.elements.Text;
+package com.example.Elements.Text;
 
-import com.example.elements.BaseElement;
+import com.example.Elements.BaseElement;
 
 /**
- * Класс для работы с текстовыми элементами.
+ * Класс длsя работы с текстовыми элементами.
  * Предоставляет методы для поиска текстовых элементов и проверки их
  * содержимого.
  */

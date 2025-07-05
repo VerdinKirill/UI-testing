@@ -1,12 +1,19 @@
 package com.example.pages;
 
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.example.Elements.Button.Button;
+import com.example.Elements.Input.Input;
 import com.example.Elements.likebutton.LikeButton;
+//import com.example.Elements.span.Span;
 import com.example.elements.Image.Image;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.io.File;
 import java.time.Duration;
 
+import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.Wait;
 
 public class PinPage extends BasePage {
@@ -19,6 +26,9 @@ public class PinPage extends BasePage {
     private final Button undoActionButton = Button.byXPath("//*[@data-test-id=\"undo-action-btn\"]");
     private final LikeButton likeButton = LikeButton.byDataTestId("react-button");
     private final Button downloadPinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-download\"]");
+//    private final Span inputSpan = Span.
+    private final Button choosePhotoButton = Button.byXPath("Выберите фото.");
+    private final Input loadPhotoInput = Input.byId("photo-upload-input");
 
     public PinPage() {
         super(PinPage.class, "//*[@data-test-id=\"closeup-container\"]");
@@ -59,8 +69,21 @@ public class PinPage extends BasePage {
     }
 
     public String getDLikeButton() {
-        System.out.println(likeButton.isDisplayed());
         return likeButton.getHeartD();
+    }
+
+    public void aa() {
+        SelenideElement element = $x("//*[@id=\"dweb-comment-editor-container\"]");
+        element.click();
+        element.sendKeys("AAAAAAAAABBB");
+    }
+
+    public void clickChoosePhotoButton() {
+        choosePhotoButton.click();
+    }
+
+    public void loadPhoto(File file) {
+        loadPhotoInput.load(file);
     }
 
     public void clickDownloadPinButton() {
