@@ -1,16 +1,17 @@
-package com.example.Elements.Text;
+package com.example.Elements.TextArea;
 
 import com.example.elements.BaseElement;
+import org.openqa.selenium.Keys;
 
 /**
  * Класс для работы с текстовыми элементами.
  * Предоставляет методы для поиска текстовых элементов и проверки их
  * содержимого.
  */
-public class Text extends BaseElement {
-    private static final String ID_XPATH = "//span[@id='%s']";
-    private static final String CLASS_XPATH = "//span[@class='%s']";
-    private static final String TEXT_XPATH = "//span[contains(text(),'%s')]";
+public class TextArea extends BaseElement {
+    private static final String ID_XPATH = "//textarea[@id='%s']";
+    private static final String CLASS_XPATH = "//textarea[@class='%s']";
+    private static final String TEXT_XPATH = "//textarea[contains(text(),'%s')]";
 
     /**
      * Конструктор класса.
@@ -18,7 +19,7 @@ public class Text extends BaseElement {
      * @param xpath шаблон XPath для поиска элемента
      * @param param параметр для подстановки в шаблон XPath
      */
-    private Text(String xpath, String param) {
+    private TextArea(String xpath, String param) {
         super(xpath, param);
     }
 
@@ -51,14 +52,25 @@ public class Text extends BaseElement {
         return baseElement.getText();
     }
 
+    public void clear() {
+        while (!baseElement.getAttribute("value").equals("")) {
+            baseElement.sendKeys(Keys.BACK_SPACE);
+        }
+    }
+
+    public void fill(String value) {
+        clear();
+        baseElement.sendKeys(value);
+    }
+
     /**
      * Находит текстовый элемент по идентификатору.
      *
      * @param id идентификатор элемента
      * @return экземпляр класса Text
      */
-    public static Text byId(String id) {
-        return new Text(ID_XPATH, id);
+    public static TextArea byId(String id) {
+        return new TextArea(ID_XPATH, id);
     }
 
     /**
@@ -67,8 +79,8 @@ public class Text extends BaseElement {
      * @param className название класса
      * @return экземпляр класса Text
      */
-    public static Text byClass(String className) {
-        return new Text(CLASS_XPATH, className);
+    public static TextArea byClass(String className) {
+        return new TextArea(CLASS_XPATH, className);
     }
 
     /**
@@ -77,7 +89,8 @@ public class Text extends BaseElement {
      * @param text текст элемента
      * @return экземпляр класса Text
      */
-    public static Text byText(String text) {
-        return new Text(TEXT_XPATH, text);
+    public static TextArea byText(String text) {
+        return new TextArea(TEXT_XPATH, text);
     }
+
 }
