@@ -1,9 +1,13 @@
 package com.example.elements.Input;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.example.elements.BaseElement;
 import org.openqa.selenium.Keys;
 
 import java.io.File;
+
+import static com.codeborne.selenide.Selenide.$;
 
 /**
  * Класс для работы с элементами типа "поле ввода".
@@ -45,13 +49,22 @@ public class Input extends BaseElement {
         baseElement.sendKeys(value);
     }
 
+
     /**
-     * Вводит указанное значение в поле ввода.
-     *
-     * @param value значение для ввода
+     * Handles file uploads
      */
     public void load(File file) {
-        baseElement.uploadFile(file);
+        System.out.println("[INFO] Starting file upload for: " + file.getName());
+        System.out.println("[DEBUG] File path: " + file.getAbsolutePath());
+
+        if (!file.exists()) {
+            String errorMsg = "[ERROR] File not found: " + file.getAbsolutePath();
+            System.err.println(errorMsg);
+            throw new RuntimeException(errorMsg);
+        }
+
+        baseElement.sendKeys(file.getAbsolutePath());
+        System.out.println("[SUCCESS]: File uploaded." + file.getName());
     }
 
     /**

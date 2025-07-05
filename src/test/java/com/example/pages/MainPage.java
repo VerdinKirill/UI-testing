@@ -58,6 +58,10 @@ public class MainPage extends BasePage {
         return page(className);
     }
 
+    public String getNthAriaLabel(int n) {
+        return mansoryContainer.getNthArticleAriaLabel(n);
+    }
+  
     public void clickSettingsModalButton() {
         settingsModalButton.click();
     }

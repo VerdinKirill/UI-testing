@@ -18,12 +18,11 @@ public class CommentTest extends BaseTest {
         initTestData();
         MainPage mainPage = auth(login, password);
         PinPage pinPage = mainPage.clickOnFirstImage(PinPage.class);
-//        pinPage.aa();
+        pinPage.fillText("Классный пост!");
         pinPage.clickChoosePhotoButton();
         File file = new File(pathToImage);
-        System.out.printf("exists %b",file.exists());
         pinPage.loadPhoto(file);
-
+        pinPage.clickSendCommentButton();
     }
 
     protected void initTestData() {
