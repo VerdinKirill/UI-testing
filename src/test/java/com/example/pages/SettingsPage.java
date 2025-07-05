@@ -9,9 +9,9 @@ public class SettingsPage extends BasePage {
 
     private final Input firstNameInput = Input.byName("first_name");
     private final Input lastNameInput = Input.byName("last_name");
-    private final TextArea aboutTextArea = TextArea.byId("email");
-    private final Button saveButton = Button.byXPath("//div[@data-test-id=\"cancel-button\"]//button");
-    private final Button cancelButton = Button.byXPath("//div[@data-test-id=\"done-button\"]//button");
+    private final TextArea aboutTextArea = TextArea.byId("about");
+    private final Button saveButton = Button.byXPath("//div[@data-test-id=\"done-button\"]/button");
+    private final Button cancelButton = Button.byXPath("//div[@data-test-id=\"cancel-button\"]/button");
 
     public SettingsPage() {
         super(LoginPage.class, PAGE_VALIDATION_XPATH);

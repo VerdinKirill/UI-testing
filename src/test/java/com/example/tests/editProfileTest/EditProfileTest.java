@@ -10,18 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EditProfileTest extends BaseTest {
-    private final String firstName = "UI";
-    private final String lastName = "testing";
+    private String firstName = "UI";
+    private String lastName = "testing";
     private final String about = "testing";
     private String login;
     private String password;
 
     @Test
     public void editProfileTest() {
+        firstName += "I";
+        lastName += 'g';
         initTestData();
         MainPage mainPage = auth(login, password);
         mainPage.clickSettingsModalButton();
-        SettingsPage settingsPage = mainPage.clickAccountButton(SettingsPage.class);
+        SettingsPage settingsPage = mainPage.clickSettings(SettingsPage.class);
         settingsPage.fillFirstName(firstName);
         settingsPage.fillLastName(lastName);
         settingsPage.fillAbout(about);
