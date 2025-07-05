@@ -1,4 +1,4 @@
-package com.example.Elements.Text;
+package com.example.elements.Text;
 
 import com.example.elements.BaseElement;
 

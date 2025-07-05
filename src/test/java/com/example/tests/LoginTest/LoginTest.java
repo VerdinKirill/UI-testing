@@ -5,6 +5,7 @@ import com.example.pages.LoginPage;
 import com.example.pages.MainPage;
 import com.example.tests.BaseTest;
 import io.github.cdimascio.dotenv.Dotenv;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,7 +19,7 @@ public class LoginTest extends BaseTest {
     private String validLogin;
     private String validPassword;
 
-    //	@Test
+    @Test
     public void checkAuth() {
         initTestData();
         LoginPage.open().openLoginModal(LoginPage.class);
@@ -67,7 +68,7 @@ public class LoginTest extends BaseTest {
     /**
      * Выполняет полный процесс аутентификации.
      *
-     * @param username      логин пользователя
+     * @param login      логин пользователя
      * @param password      пароль пользователя
      * @param nextPageClass класс страницы
      * @return экземпляр класса страницы

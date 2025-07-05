@@ -51,7 +51,7 @@ public class Input extends BaseElement {
 
 
     /**
-     * Handles file uploads
+     * Метод позволяющий загружать файлы
      */
     public void load(File file) {
         System.out.println("[INFO] Starting file upload for: " + file.getName());
@@ -114,7 +114,7 @@ public class Input extends BaseElement {
     /**
      * Находит поле ввода по названию класса.
      *
-     * @param className название класса
+     * @param text название класса
      * @return экземпляр класса Input
      */
     public static Input byClass(String text) {

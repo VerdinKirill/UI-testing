@@ -7,15 +7,26 @@ import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.jupiter.api.Test;
 
 /**
- * Тестовый класс для проверки функциональности скрытия постов.
- * Скрывает первый пост.
+ * Тестовый класс для проверки функциональности скрытия пинов.
+ * Проверяет возможность скрытия пина и отмены этого действия.
  */
 public class HideTest extends BaseTest {
     private static final String SEARCH_STR = "Милые котики";
     private String login;
     private String password;
 
-//    @Test
+    /**
+     * Проверяет функциональность скрытия пина и отмены этого действия.
+     * Шаги теста:
+     * 1. Аутентификация пользователя
+     * 2. Открытие главной страницы
+     * 3. Открытие первого пина
+     * 4. Скрытие пина
+     * 5. Проверка отображения кнопки отмены
+     * 6. Отмена действия скрытия
+     * 7. Проверка скрытия кнопки отмены
+     */
+    @Test
     public void checkHidePost() {
         initTestData();
         MainPage mainPage = auth(login, password);

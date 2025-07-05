@@ -77,7 +77,7 @@ public class Span extends BaseElement {
      * @param className название класса
      * @return экземпляр класса span
      */
-    public static Span byClass(String text) {
-        return new Span(CLASS_XPATH, text);
+    public static Span byClass(String className) {
+        return new Span(CLASS_XPATH, className);
     }
 }

@@ -45,10 +45,6 @@ public class LoginPage extends BasePage {
         return loginModal.isDisplayed();
     }
 
-    public boolean checkIsLoginModalDisplayed() {
-        return loginModal.isDisplayed();
-    }
-
     /**
      * Вводит логин в поле ввода.
      *

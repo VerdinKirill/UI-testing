@@ -4,26 +4,66 @@ import com.example.pages.MainPage;
 import com.example.pages.PinPage;
 import com.example.tests.BaseTest;
 import io.github.cdimascio.dotenv.Dotenv;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.webdriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Тестовый класс для проверки функциональности открытия и закрытия постов.
+ * Проверяет корректность перехода на страницу поста и возврата на главную страницу.
+ */
 public class OpenClosePostTest extends BaseTest {
+    private String login;
+    private String password;
 
-    //    @Test
-    public void openClosePost() {
+    /**
+     * Инициализирует тестовые данные перед каждым тестом.
+     * Загружает учетные данные из .env файла.
+     */
+    @BeforeEach
+    protected void initTestData() {
         Dotenv dotenv = Dotenv.load();
-        String login = dotenv.get("USER_LOGIN");
-        String password = dotenv.get("USER_PASSWORD");
+        login = dotenv.get("USER_LOGIN");
+        password = dotenv.get("USER_PASSWORD");
+    }
+
+    /**
+     * Проверяет функциональность открытия и закрытия поста:
+     * 1. Открытие поста и проверка URL
+     * 2. Возврат на главную страницу и проверка отображения
+     *
+     * Шаги теста:
+     * 1. Аутентификация пользователя
+     * 2. Открытие главной страницы
+     * 3. Получение URL первого поста
+     * 4. Открытие страницы поста
+     * 5. Проверка соответствия URL
+     * 6. Возврат на главную страницу
+     * 7. Проверка отображения главной страницы
+     */
+    @Test
+    public void shouldOpenPostAndReturnToMainPage() {
+        // Аутентификация и открытие главной страницы
         MainPage mainPage = auth(login, password);
-        String hrefPreview = mainPage.getHrefOfFirstImage();
-        System.out.println(hrefPreview);
+
+        // Получение URL первого поста
+        String firstPostUrl = mainPage.getHrefOfFirstImage();
+
+        // Открытие страницы поста
         PinPage pinPage = mainPage.clickOnFirstImage(PinPage.class);
-        pinPage.waitForPinPageLoad(hrefPreview);
-        String hrefPinPage = webdriver().driver().getCurrentFrameUrl();
-        System.out.println(hrefPinPage);
-        assertTrue(hrefPinPage.contains(hrefPreview));
+        pinPage.waitForPinPageLoad(firstPostUrl);
+
+        // Проверка URL страницы поста
+        String currentUrl = pinPage.getImageHref();
+        assertTrue(currentUrl.contains(firstPostUrl),
+                "URL страницы поста должен содержать URL превью");
+
+        // Возврат на главную страницу
         mainPage = pinPage.clickBackButton(MainPage.class);
-        assertTrue(mainPage.isDisplayed());
+
+        // Проверка отображения главной страницы
+        assertTrue(mainPage.isDisplayed(),
+                "Главная страница должна отображаться после возврата");
     }
 }

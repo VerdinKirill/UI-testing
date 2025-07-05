@@ -21,14 +21,14 @@ public class SortingTest extends BaseTest {
         initTestData();
         MainPage mainPage = auth(login, password);
         BoardsPage boardsPage = mainPage.clickAccountButton(BoardsPage.class);
-        boardsPage.clickMoreOptionsButton();
-        boardsPage.clickAlphabeticOrderButton();
-        String previewName = boardsPage.getPreviewName();
+        boardsPage.openSortingOptions();
+        boardsPage.sortAlphabetically();
+        String previewName = boardsPage.getFirstBoardName();
         assertEquals("Котята", previewName);
 
-        boardsPage.clickMoreOptionsButton();
-        boardsPage.clickLastAddedOrderButton();
-        previewName = boardsPage.getPreviewName();
+        boardsPage.openSortingOptions();
+        boardsPage.sortByLastAdded();
+        previewName = boardsPage.getFirstBoardName();
         assertEquals("Тестовая доска", previewName);
     }
 
