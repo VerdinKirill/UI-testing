@@ -18,12 +18,12 @@ public class EditProfileTest extends BaseTest {
 
     @Test
     public void editProfileTest() {
-        firstName += "I";
-        lastName += 'g';
         initTestData();
         MainPage mainPage = auth(login, password);
         mainPage.clickSettingsModalButton();
         SettingsPage settingsPage = mainPage.clickSettings(SettingsPage.class);
+        firstName = settingsPage.getFirstName() + "I";
+        lastName = settingsPage.getLastName() + 'g';
         settingsPage.fillFirstName(firstName);
         settingsPage.fillLastName(lastName);
         settingsPage.fillAbout(about);
