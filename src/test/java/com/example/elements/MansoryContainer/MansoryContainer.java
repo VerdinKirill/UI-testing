@@ -1,6 +1,6 @@
-package com.example.Elements.MansoryContainer;
+package com.example.elements.MansoryContainer;
 
-import com.example.Elements.ImagePreview.ImagePreview;
+import com.example.elements.ImagePreview.ImagePreview;
 import com.example.elements.BaseElement;
 import io.qameta.allure.Step;
 
@@ -30,6 +30,10 @@ public class MansoryContainer extends BaseElement {
 
     public static MansoryContainer byClass(String text) {
         return new MansoryContainer(CLASS_XPATH, text);
+    }
+
+    public String getPreviewName (){
+        return firstImagePreview.getPreviewName();
     }
 
 }

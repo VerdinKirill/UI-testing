@@ -1,7 +1,7 @@
 package com.example.pages;
 
-import com.example.Elements.SearchHeader.SearchHeader;
-import com.example.Elements.MansoryContainer.MansoryContainer;
+import com.example.elements.SearchHeader.SearchHeader;
+import com.example.elements.MansoryContainer.MansoryContainer;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
@@ -48,8 +48,9 @@ public class MainPage extends BasePage {
         Wait().withTimeout(Duration.ofSeconds(10)).until(ExpectedConditions.urlContains(expectedUrlPart));
     }
 
-    public void clickAccountButton() {
+    public <T extends BasePage> T clickAccountButton(Class<T> className)  {
         searchHeader.clickAccountButton();
+		return page(className);
     }
 
 }
