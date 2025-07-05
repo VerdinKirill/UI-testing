@@ -1,13 +1,9 @@
 package com.example.tests.SearchTest;
 
-import org.junit.jupiter.api.Test;
-
 import com.example.pages.MainPage;
 import com.example.tests.BaseTest;
-
 import io.github.cdimascio.dotenv.Dotenv;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.junit.jupiter.api.Test;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -32,11 +28,6 @@ public class SearchTest extends BaseTest {
         System.out.println(encodedNoResultsTerm);
         String expectedUrlPart = "?q=" + encodedNoResultsTerm;
         mainPage.waitForSearchPageLoad(expectedUrlPart);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

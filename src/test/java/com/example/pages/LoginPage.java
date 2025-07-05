@@ -1,7 +1,7 @@
 package com.example.pages;
 
-import com.example.elements.Button.Button;
-import com.example.elements.LoginModal.LoginModal;
+import com.example.Elements.Button.Button;
+import com.example.Elements.LoginModal.LoginModal;
 
 /**
  * Страница аутентификации пользователя.
@@ -25,9 +25,10 @@ public class LoginPage extends BasePage {
 
     /**
      * Открывает модальное окно аутентификации.
+     *
      * @param nextPageClass класс возращаемой страницы
+     * @param <T>           тип страницы
      * @return текущий экземпляр страницы
-     * @param <T> тип страницы
      */
     public <T extends BasePage> T openLoginModal(Class<T> nextPageClass) {
         // System.out.print(loginModalButton.isDisplayed());
@@ -37,7 +38,7 @@ public class LoginPage extends BasePage {
 
     /**
      * Проверяет отображение модального окна аутентификации.
-     * 
+     *
      * @return true если модальное окно отображается, иначе false
      */
     public boolean isLoginModalDisplayed() {
@@ -50,11 +51,11 @@ public class LoginPage extends BasePage {
 
     /**
      * Вводит логин в поле ввода.
-     *          
-     * @param login логин пользователя
+     *
+     * @param login         логин пользователя
      * @param nextPageClass класс возращаемой страницы
+     * @param <T>           тип страницы
      * @return текущий экземпляр страницы
-     * @param <T> тип страницы
      */
     public <T extends BasePage> T enterLogin(String login, Class<T> nextPageClass) {
         loginModal.enterTextInLoginInput(login);
@@ -63,12 +64,11 @@ public class LoginPage extends BasePage {
 
     /**
      * Вводит пароль в поле ввода.
-     * 
+     *
      * @param password      пароль пользователя
      * @param nextPageClass класс возращаемой страницы
+     * @param <T>           тип страницы
      * @return текущий экземпляр страницы
-     * @param <T> тип страницы
-     * 
      */
     public <T extends BasePage> T enterPassword(String password, Class<T> nextPageClass) {
         loginModal.enterTextInPasswordInput(password);
@@ -76,11 +76,11 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * 
      * Нажимает кнопку входа.
+     *
      * @param nextPageClass класс возраща
-        * @return экземпляр главной страницы
-	 * @param <T> тип страницы
+     * @param <T>           тип страницы
+     * @return экземпляр главной страницы
      */
     public <T extends BasePage> T clickLoginButton(Class<T> nextPageClass) {
         loginModal.clickLoginButton();
@@ -89,7 +89,7 @@ public class LoginPage extends BasePage {
 
     /**
      * Проверяет отображение сообщения о неверном пароле.
-     * 
+     *
      * @return true если сообщение отображается, иначе false
      */
     public boolean checkIsIncorrectPasswordMessageDisplayed() {
@@ -98,7 +98,7 @@ public class LoginPage extends BasePage {
 
     /**
      * Проверяет отображение сообщения о неверном формате email.
-     * 
+     *
      * @return true если сообщение отображается, иначе false
      */
     public boolean checkIsIncorrectEmailMessageDisplayed() {
@@ -107,7 +107,7 @@ public class LoginPage extends BasePage {
 
     /**
      * Открывает страницу аутентификации.
-     * 
+     *
      * @return экземпляр страницы аутентификации
      */
 

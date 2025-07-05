@@ -1,7 +1,7 @@
-package com.example.elements.SearchHeader;
+package com.example.Elements.SearchHeader;
 
+import com.example.Elements.Button.Button;
 import com.example.elements.BaseElement;
-import com.example.elements.Button.Button;
 import com.example.elements.Input.Input;
 
 public class SearchHeader extends BaseElement {
@@ -18,11 +18,11 @@ public class SearchHeader extends BaseElement {
         return new SearchHeader(CLASS_XPATH, text);
     }
 
-    public  void open() {
+    public void open() {
         searchInput.click();
     }
 
-    public  void fillSearchText(String text) {
+    public void fillSearchText(String text) {
         searchInput.fill(text);
     }
 

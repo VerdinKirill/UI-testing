@@ -1,8 +1,7 @@
 package com.example.elements.Input;
 
-import org.openqa.selenium.Keys;
-
 import com.example.elements.BaseElement;
+import org.openqa.selenium.Keys;
 
 /**
  * Класс для работы с элементами типа "поле ввода".
@@ -16,7 +15,7 @@ public class Input extends BaseElement {
 
     /**
      * Конструктор класса.
-     * 
+     *
      * @param xpath шаблон XPath для поиска элемента
      * @param param параметр для подстановки в шаблон XPath
      */
@@ -35,7 +34,7 @@ public class Input extends BaseElement {
 
     /**
      * Вводит указанное значение в поле ввода.
-     * 
+     *
      * @param value значение для ввода
      */
     public void fill(String value) {
@@ -59,7 +58,7 @@ public class Input extends BaseElement {
 
     /**
      * Находит поле ввода по идентификатору.
-     * 
+     *
      * @param id идентификатор поля ввода
      * @return экземпляр класса Input
      */
@@ -69,7 +68,7 @@ public class Input extends BaseElement {
 
     /**
      * Находит поле ввода по имени.
-     * 
+     *
      * @param name имя поля ввода
      * @return экземпляр класса Input
      */
@@ -79,7 +78,7 @@ public class Input extends BaseElement {
 
     /**
      * Находит поле ввода по названию класса.
-     * 
+     *
      * @param className название класса
      * @return экземпляр класса Input
      */

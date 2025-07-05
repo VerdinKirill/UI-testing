@@ -1,17 +1,17 @@
 package com.example.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.FileDownloadMode;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.example.pages.*;
-
+import com.example.pages.LoginPage;
+import com.example.pages.MainPage;
 import io.qameta.allure.selenide.AllureSelenide;
-import static com.codeborne.selenide.Selenide.open;
-
-import org.openqa.selenium.chrome.ChromeOptions;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import static com.codeborne.selenide.Selenide.open;
 
 /**
  * Базовый класс для UI тестов.
@@ -40,7 +40,7 @@ public class BaseTest {
 
     /**
      * Выполняет аутентификацию пользователя.
-     * 
+     *
      * @param username логин пользователя
      * @param password пароль пользователя
      */
@@ -71,6 +71,7 @@ public class BaseTest {
                 "--remote-allow-origins=*",
                 "--disable-blink-features=AutomationControlled");
         Configuration.browserCapabilities = options;
+        Configuration.downloadsFolder = "./downloads";
     }
 
     /**

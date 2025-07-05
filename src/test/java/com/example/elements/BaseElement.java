@@ -1,12 +1,13 @@
 package com.example.elements;
 
+import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
+
 import java.lang.reflect.UndeclaredThrowableException;
 import java.time.Duration;
 
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.ex.ElementNotFound;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$x;
 
 /**
  * Базовый класс для всех элементов пользовательского интерфейса.
@@ -18,7 +19,7 @@ public class BaseElement {
 
     /**
      * Конструктор базового элемента.
-     * 
+     *
      * @param xpathTemplate шаблон XPath для поиска элемента
      * @param parameter     параметр для подстановки в шаблон XPath
      */
@@ -29,7 +30,7 @@ public class BaseElement {
     /**
      * Проверяет, отображается ли элемент на странице.
      * Ожидает появление элемента в течение стандартного времени ожидания.
-     * 
+     *
      * @return true если элемент отображается, иначе false
      */
     public boolean isDisplayed() {
@@ -44,7 +45,7 @@ public class BaseElement {
 
     /**
      * Проверяет, отображается ли элемент на странице с кастомным временем ожидания.
-     * 
+     *
      * @param seconds время ожидания в секундах
      * @return true если элемент отображается, иначе false
      */
@@ -59,7 +60,7 @@ public class BaseElement {
 
     /**
      * Проверяет, доступен ли элемент для взаимодействия.
-     * 
+     *
      * @return true если элемент доступен, иначе false
      */
     public boolean isEnabled() {
@@ -68,7 +69,7 @@ public class BaseElement {
 
     /**
      * Возвращает значение указанного атрибута элемента.
-     * 
+     *
      * @param attributeName название атрибута
      * @return значение атрибута или null, если атрибут отсутствует
      */

@@ -1,4 +1,4 @@
-package com.example.elements.Button;
+package com.example.Elements.Button;
 
 import com.example.elements.BaseElement;
 
@@ -8,87 +8,93 @@ import com.example.elements.BaseElement;
  * и выполнения действий над ними.
  */
 public class Button extends BaseElement {
-	private static final String ID_XPATH = "//button[@id='%s']";
-	private static final String TEXT_XPATH = "//button[contains(text(),'%s')]";
-	private static final String CLASS_XPATH = "//button[@class='%s']";
-	private static final String TYPE_XPATH = "//button[@type='%s']";
-	private static final String ARIA_LABEL_XPATH = "//button[@aria-label='%s']";
+    private static final String ID_XPATH = "//button[@id='%s']";
+    private static final String TEXT_XPATH = "//button[contains(text(),'%s')]";
+    private static final String CLASS_XPATH = "//button[@class='%s']";
+    private static final String TYPE_XPATH = "//button[@type='%s']";
+    private static final String ARIA_LABEL_XPATH = "//button[@aria-label='%s']";
+    private static final String DATA_TEST_ID_BUTTON = "//button[@data-test-id='%s']";
 
-	/**
-	 * Конструктор класса.
-	 * 
-	 * @param xpath шаблон XPath для поиска элемента
-	 * @param param параметр для подстановки в шаблон XPath
-	 */
-	private Button(String xpath, String param) {
-		super(xpath, param);
-	}
+    /**
+     * Конструктор класса.
+     *
+     * @param xpath шаблон XPath для поиска элемента
+     * @param param параметр для подстановки в шаблон XPath
+     */
+    protected Button(String xpath, String param) {
+        super(xpath, param);
+    }
 
-	/**
-	 * Выполняет клик по кнопке.
-	 */
-	public void click() {
-		baseElement.click();
-	}
+    /**
+     * Выполняет клик по кнопке.
+     */
+    public void click() {
+        baseElement.click();
+    }
 
-	/**
-	 * Находит кнопку по идентификатору.
-	 * 
-	 * @param id идентификатор кнопки
-	 * @return экземпляр класса Button
-	 */
-	public static Button byId(String id) {
-		return new Button(ID_XPATH, id);
-	}
+    /**
+     * Находит кнопку по идентификатору.
+     *
+     * @param id идентификатор кнопки
+     * @return экземпляр класса Button
+     */
+    public static Button byId(String id) {
+        return new Button(ID_XPATH, id);
+    }
 
-	/**
-	 * Находит кнопку по тексту.
-	 * 
-	 * @param text текст кнопки
-	 * @return экземпляр класса Button
-	 */
-	public static Button byText(String text) {
-		return new Button(TEXT_XPATH, text);
-	}
+    /**
+     * Находит кнопку по тексту.
+     *
+     * @param text текст кнопки
+     * @return экземпляр класса Button
+     */
+    public static Button byText(String text) {
+        return new Button(TEXT_XPATH, text);
+    }
 
-	/**
-	 * Находит кнопку по названию класса.
-	 * 
-	 * @param className название класса
-	 * @return экземпляр класса Button
-	 */
-	public static Button byClass(String text) {
-		return new Button(CLASS_XPATH, text);
-	}
+    /**
+     * Находит кнопку по названию класса.
+     *
+     * @param className название класса
+     * @return экземпляр класса Button
+     */
+    public static Button byClass(String text) {
+        return new Button(CLASS_XPATH, text);
+    }
 
-	/**
-	 * Находит кнопку по типу.
-	 * 
-	 * @param type тип кнопки
-	 * @return экземпляр класса Button
-	 */
-	public static Button byType(String text) {
-		return new Button(TYPE_XPATH, text);
-	}
+    /**
+     * Находит кнопку по типу.
+     *
+     * @param type тип кнопки
+     * @return экземпляр класса Button
+     */
+    public static Button byType(String text) {
+        return new Button(TYPE_XPATH, text);
+    }
 
-	/**
-	 * Находит кнопку по указанному XPath.
-	 * 
-	 * @param xpath XPath для поиска элемента
-	 * @return экземпляр класса Button
-	 */
-	public static Button byXPath(String xpath) {
-		return new Button("%s", xpath);
-	}
+    /**
+     * Находит кнопку по указанному XPath.
+     *
+     * @param xpath XPath для поиска элемента
+     * @return экземпляр класса Button
+     */
+    public static Button byXPath(String xpath) {
+        return new Button("%s", xpath);
+    }
 
-	/**
-	 * Находит кнопку по aria-label.
-	 * 
-	 * @param ariaLabel тип кнопки
-	 * @return экземпляр класса Button
-	 */
-	public static Button byAriaLabel(String ariaLabel) {
-		return new Button(ARIA_LABEL_XPATH, ariaLabel);
-	}
+    /**
+     * Находит кнопку по aria-label.
+     *
+     * @param ariaLabel тип кнопки
+     * @return экземпляр класса Button
+     */
+    public static Button byAriaLabel(String ariaLabel) {
+        return new Button(ARIA_LABEL_XPATH, ariaLabel);
+    }
+
+    public static Button byDataTestId(String dataTestId) {
+        return new Button(DATA_TEST_ID_BUTTON, dataTestId);
+    }
+
 
 }

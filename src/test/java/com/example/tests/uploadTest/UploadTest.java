@@ -1,4 +1,4 @@
-package com.example.tests.HideTest;
+package com.example.tests.uploadTest;
 
 import com.example.pages.MainPage;
 import com.example.pages.PinPage;
@@ -6,28 +6,27 @@ import com.example.tests.BaseTest;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.jupiter.api.Test;
 
-/**
- * Тестовый класс для проверки функциональности скрытия постов.
- * Скрывает первый пост.
- */
-public class HideTest extends BaseTest {
-    private static final String SEARCH_STR = "Милые котики";
+import java.io.File;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class UploadTest extends BaseTest {
     private String login;
     private String password;
+    private String pathToDownloadDir = "./downloads";
 
-    @Test
-    public void checkHidePost() {
+//    @Test
+    public void checkUpload() {
+        int startJpegCount = checkNumJpegFiles();
         initTestData();
         MainPage mainPage = auth(login, password);
-        String hrefPreview = mainPage.getHrefOfFirstImage();
-        System.out.println(hrefPreview);
         PinPage pinPage = mainPage.clickOnFirstImage(PinPage.class);
-        pinPage.waitForPinPageLoad(hrefPreview);
         pinPage.clickMoreOptionsButton();
-        pinPage.clickHidePinButton();
-        pinPage.clickNotInterestedButton();
-        pinPage.clickUndoActionButton();
+        pinPage.clickDownloadPinButton();
+        int endJpegCount = checkNumJpegFiles();
+        assertTrue(endJpegCount > startJpegCount);
     }
+
 
     /**
      * Инициализация тестовых данных.
@@ -39,5 +38,9 @@ public class HideTest extends BaseTest {
         password = dotenv.get("USER_PASSWORD");
     }
 
-
+    private int checkNumJpegFiles() {
+        File downloadDir = new File(pathToDownloadDir);
+        File[] jpegFiles = downloadDir.listFiles((dir, name) -> name.toLowerCase().endsWith(".jpeg"));
+        return jpegFiles != null ? jpegFiles.length : 0;
+    }
 }
