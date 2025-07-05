@@ -19,6 +19,8 @@ public class PinPage extends BasePage {
     private final Button undoActionButton = Button.byXPath("//*[@data-test-id=\"undo-action-btn\"]");
     private final LikeButton likeButton = LikeButton.byDataTestId("react-button");
     private final Button downloadPinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-download\"]");
+    private final Button saveButton = Button.byAriaLabel("Сохранить");
+    private final Button alreadySavedButton = Button.byAriaLabel("Пин сохранен");
 
     public PinPage() {
         super(PinPage.class, "//*[@data-test-id=\"closeup-container\"]");
@@ -65,5 +67,13 @@ public class PinPage extends BasePage {
 
     public void clickDownloadPinButton() {
         downloadPinButton.click();
+    }
+
+    public void clickSaveButton() {
+        saveButton.click();
+    }
+
+    public boolean isPostSaved() {
+        return alreadySavedButton.isDisplayed();
     }
 }
