@@ -14,6 +14,7 @@ public class Input extends BaseElement {
     private static final String ID_XPATH = "//input[@id='%s']";
     private static final String NAME_XPATH = "//input[@name='%s']";
     private static final String CLASS_XPATH = "//input[@class='%s']";
+    private static final String DATA_TEST_ID_XPATH = "//input[@data-test-id='%s']";
 
     /**
      * Конструктор класса.
@@ -75,6 +76,16 @@ public class Input extends BaseElement {
      */
     public static Input byId(String id) {
         return new Input(ID_XPATH, id);
+    }
+
+    /**
+     * Находит поле ввода по идентификатору.
+     *
+     * @param id идентификатор поля ввода
+     * @return экземпляр класса Input
+     */
+    public static Input byDataTestId(String id) {
+        return new Input(DATA_TEST_ID_XPATH, id);
     }
 
     /**

@@ -21,7 +21,7 @@ public class CommentTest extends BaseTest {
 //        pinPage.aa();
         pinPage.clickChoosePhotoButton();
         File file = new File(pathToImage);
-        System.out.println(file.exists());
+        System.out.printf("exists %b",file.exists());
         pinPage.loadPhoto(file);
 
     }

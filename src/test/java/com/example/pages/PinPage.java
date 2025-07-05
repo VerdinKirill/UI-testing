@@ -28,7 +28,7 @@ public class PinPage extends BasePage {
     private final Button downloadPinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-download\"]");
 //    private final Span inputSpan = Span.
     private final Button choosePhotoButton = Button.byAriaLabel("Выберите фото.");
-    private final Input loadPhotoInput = Input.byId("photo-upload-input");
+    private final Input loadPhotoInput = Input.byDataTestId("photo-upload-input");
     private final Image loadedImage = Image.byAlt("Фотография");
 
     public PinPage() {
