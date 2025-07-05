@@ -31,6 +31,9 @@ public class PinPage extends BasePage {
     private final Input loadPhotoInput = Input.byDataTestId("photo-upload-input");
     private final Image loadedImage = Image.byAlt("Фотография");
 
+    private final SelenideElement commentTextInput = $x("//*[@class='DraftEditor-editorContainer']/div");
+    private final Button sendCommentButton = Button.byAriaLabel("Опубликовать");
+
     public PinPage() {
         super(PinPage.class, "//*[@data-test-id=\"closeup-container\"]");
     }
@@ -73,10 +76,12 @@ public class PinPage extends BasePage {
         return likeButton.getHeartD();
     }
 
-    public void aa() {
-        SelenideElement element = $x("//*[@id=\"dweb-comment-editor-container\"]");
-        element.click();
-        element.sendKeys("AAAAAAAAABBB");
+    public void fillText(String text) {
+        commentTextInput.sendKeys(text);
+    }
+
+    public void clickSendCommentButton() {
+        sendCommentButton.click();
     }
 
     public void clickChoosePhotoButton() {
