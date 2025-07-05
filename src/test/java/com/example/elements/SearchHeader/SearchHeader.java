@@ -1,4 +1,4 @@
-package com.example.Elements.SearchHeader;
+package com.example.elements.SearchHeader;
 
 import com.example.Elements.Button.Button;
 import com.example.Elements.BaseElement;
