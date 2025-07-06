@@ -21,11 +21,67 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void checkAuth() {
+        System.out.println("[INFO] Начало теста: checkAuth");
+
+        // Инициализация данных
+        System.out.println("[ACTION] Инициализация тестовых данных");
         initTestData();
+        System.out.println("[SUCCESS] Данные инициализированы: login=" + validLogin);
+
+        // Открытие страницы входа
+        System.out.println("[ACTION] Открытие страницы логина");
         LoginPage.open().openLoginModal(LoginPage.class);
+        System.out.println("[SUCCESS] Модальное окно логина открыто");
+
+        // Проверка ошибки при некорректном email
         shouldShowErrorWhenInvalidFormatEmail();
+
+        // Проверка ошибки при неправильном пароле
         shouldShowErrorWhenInvalidPassword();
+
+        // Проверка успешного входа
         shouldSuccessfullyLoginWithValidCredentials();
+
+        System.out.println("[INFO] Завершение теста: checkAuth");
+    }
+
+    /**
+     * Проверяет сценарий входа с неверным паролем.
+     * Ожидает появление сообщения об ошибке.
+     */
+    private void shouldShowErrorWhenInvalidPassword() {
+        System.out.println("[ACTION] Попытка входа с правильным логином и неправильным паролем");
+        LoginPage loginPage = performLogin(validLogin, FAKE_PASSWORD, LoginPage.class);
+        boolean isErrorShown = loginPage.checkIsIncorrectPasswordMessageDisplayed();
+        System.out.println("[ASSERTION] Отображается сообщение об ошибке пароля: " + isErrorShown);
+        assertTrue(isErrorShown);
+        System.out.println("[ASSERTION PASSED] Ошибка при неверном пароле отображается корректно");
+    }
+
+    /**
+     * Проверяет сценарий входа с неверным email неверного формата.
+     * Ожидает появление сообщения об ошибке.
+     */
+    private void shouldShowErrorWhenInvalidFormatEmail() {
+        System.out.println("[ACTION] Попытка входа с email в неправильном формате");
+        LoginPage loginPage = performLogin(INCORRECT_FORMAT_EMAIL, FAKE_PASSWORD, LoginPage.class);
+        boolean isErrorShown = loginPage.checkIsIncorrectEmailMessageDisplayed();
+        System.out.println("[ASSERTION] Отображается сообщение об ошибке формата email: " + isErrorShown);
+        assertTrue(isErrorShown);
+        System.out.println("[ASSERTION PASSED] Ошибка при неправильном формате email отображается корректно");
+    }
+
+    /**
+     * Проверяет сценарий входа с верными параметрами входа.
+     * Ожидает выполнение аутентификации и прогрузку главной страницы.
+     */
+    private void shouldSuccessfullyLoginWithValidCredentials() {
+        System.out.println("[ACTION] Попытка входа с валидными учетными данными");
+        MainPage mainPage = performLogin(validLogin, validPassword, MainPage.class);
+        boolean isMainPageVisible = mainPage.isDisplayed();
+        System.out.println("[ASSERTION] Главная страница отображается: " + isMainPageVisible);
+        assertTrue(isMainPageVisible);
+        System.out.println("[ASSERTION PASSED] Успешный вход с валидными учетными данными");
     }
 
     /**
@@ -36,33 +92,6 @@ public class LoginTest extends BaseTest {
         Dotenv dotenv = Dotenv.load();
         validLogin = dotenv.get("USER_LOGIN");
         validPassword = dotenv.get("USER_PASSWORD");
-    }
-
-    /**
-     * Проверяет сценарий входа с неверным паролем.
-     * Ожидает появление сообщения об ошибке.
-     */
-    private void shouldShowErrorWhenInvalidPassword() {
-        LoginPage loginPage = performLogin(validLogin, FAKE_PASSWORD, LoginPage.class);
-        assertTrue(loginPage.checkIsIncorrectPasswordMessageDisplayed());
-    }
-
-    /**
-     * Проверяет сценарий входа с неверным email неверного формата.
-     * Ожидает появление сообщения об ошибке.
-     */
-    private void shouldShowErrorWhenInvalidFormatEmail() {
-        LoginPage loginPage = performLogin(INCORRECT_FORMAT_EMAIL, FAKE_PASSWORD, LoginPage.class);
-        assertTrue(loginPage.checkIsIncorrectEmailMessageDisplayed());
-    }
-
-    /**
-     * Проверяет сценарий входа с верными параметрами входа.
-     * Ожидает выполнение аутентификации и прогрузку главной страницы.
-     */
-    private void shouldSuccessfullyLoginWithValidCredentials() {
-        MainPage mainPage = performLogin(validLogin, validPassword, MainPage.class);
-        assertTrue(mainPage.isDisplayed());
     }
 
     /**

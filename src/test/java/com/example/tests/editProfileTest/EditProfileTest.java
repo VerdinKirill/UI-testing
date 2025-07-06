@@ -42,33 +42,56 @@ public class EditProfileTest extends BaseTest {
      */
     @Test
     public void shouldSuccessfullyEditUserProfile() {
+        System.out.println("[INFO] Начало теста: shouldSuccessfullyEditUserProfile");
+
         // Аутентификация и открытие главной страницы
+        System.out.println("[ACTION] Аутентификация пользователя");
         MainPage mainPage = auth(login, password);
+        System.out.println("[SUCCESS] Пользователь аутентифицирован");
 
         // Открытие страницы настроек
+        System.out.println("[ACTION] Открытие модального окна настроек");
         mainPage.clickSettingsModalButton();
+        System.out.println("[ACTION] Переход на страницу настроек");
         SettingsPage settingsPage = mainPage.clickSettings(SettingsPage.class);
+        System.out.println("[SUCCESS] Страница настроек открыта");
 
         // Сохранение исходных значений
+        System.out.println("[ACTION] Сохранение исходных значений профиля");
         saveOriginalProfileValues(settingsPage);
+        System.out.println("[INFO] Исходное имя: " + originalFirstName);
+        System.out.println("[INFO] Исходная фамилия: " + originalLastName);
+        System.out.println("[INFO] Исходное 'О себе': " + originalAbout);
 
         try {
             // Подготовка новых значений
             String newFirstName = originalFirstName + NAME_SUFFIX;
             String newLastName = originalLastName + SURNAME_SUFFIX;
+            System.out.println("[INFO] Новое имя: " + newFirstName);
+            System.out.println("[INFO] Новая фамилия: " + newLastName);
+            System.out.println("[INFO] Новое 'О себе': " + ABOUT_TEXT);
 
             // Изменение данных профиля
+            System.out.println("[ACTION] Изменение данных профиля");
             updateProfileValues(settingsPage, newFirstName, newLastName, ABOUT_TEXT);
+            System.out.println("[SUCCESS] Данные профиля обновлены и сохранены");
 
             // Обновление страницы для проверки сохранения
+            System.out.println("[ACTION] Обновление страницы настроек для валидации");
             settingsPage = settingsPage.refresh(SettingsPage.class);
 
             // Проверка обновленных значений
+            System.out.println("[ACTION] Проверка обновлённых значений профиля");
             verifyProfileValues(settingsPage, newFirstName, newLastName, ABOUT_TEXT);
+            System.out.println("[ASSERTION PASSED] Значения профиля успешно обновлены и проверены");
         } finally {
             // Восстановление исходных значений
+            System.out.println("[ACTION] Восстановление исходных значений профиля");
             restoreOriginalProfileValues(settingsPage);
+            System.out.println("[SUCCESS] Профиль восстановлен к первоначальным значениям");
         }
+
+        System.out.println("[INFO] Завершение теста: shouldSuccessfullyEditUserProfile");
     }
 
     /**

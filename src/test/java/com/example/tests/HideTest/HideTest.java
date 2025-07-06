@@ -21,15 +21,47 @@ public class HideTest extends BaseTest {
      */
     @Test
     public void checkHidePost() {
+        System.out.println("[INFO] Начало теста: checkHidePost");
+
+        // Инициализация данных
+        System.out.println("[ACTION] Инициализация учетных данных");
         initTestData();
+        System.out.println("[SUCCESS] Данные инициализированы: login=" + login);
+
+        // Аутентификация
+        System.out.println("[ACTION] Аутентификация пользователя");
         MainPage mainPage = auth(login, password);
+        System.out.println("[SUCCESS] Аутентификация прошла успешно");
+
+        // Получение ссылки на первый пин
+        System.out.println("[ACTION] Получение href первого пина");
         String hrefPreview = mainPage.getHrefOfFirstImage();
+        System.out.println("[INFO] href пина: " + hrefPreview);
+
+        // Переход к пину
+        System.out.println("[ACTION] Клик на первый пин");
         PinPage pinPage = mainPage.clickOnFirstImage(PinPage.class);
+        System.out.println("[ACTION] Ожидание загрузки страницы пина");
         pinPage.waitForPinPageLoad(hrefPreview);
+        System.out.println("[SUCCESS] Страница пина загружена");
+
+        // Скрытие пина
+        System.out.println("[ACTION] Нажатие кнопки 'Еще опции'");
         pinPage.clickMoreOptionsButton();
+        System.out.println("[ACTION] Нажатие кнопки 'Скрыть пин'");
         pinPage.clickHidePinButton();
+
+        // Подтверждение "Не интересно"
+        System.out.println("[ACTION] Подтверждение скрытия: 'Не интересно'");
         mainPage = pinPage.clickNotInterestedButton(MainPage.class);
+        System.out.println("[SUCCESS] Возврат на главную страницу");
+
+        // Проверка отображения кнопки "Отменить"
+        System.out.println("[ASSERTION] Проверка отображения кнопки 'Отменить'");
         assertTrue(mainPage.undoDisplayed());
+        System.out.println("[ASSERTION PASSED] Кнопка 'Отменить' отображается");
+
+        System.out.println("[INFO] Завершение теста: checkHidePost");
     }
 
     /**
