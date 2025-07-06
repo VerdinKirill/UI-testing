@@ -15,7 +15,7 @@ public class UploadTest extends BaseTest {
     private String password;
     private String pathToDownloadDir = "./downloads";
 
-//    @Test
+    @Test
     public void checkUpload() {
         int startJpegCount = checkNumJpegFiles();
         initTestData();
