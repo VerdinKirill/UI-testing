@@ -55,7 +55,7 @@ public class OpenClosePostTest extends BaseTest {
         pinPage.waitForPinPageLoad(firstPostUrl);
 
         // Проверка URL страницы поста
-        String currentUrl = pinPage.getImageHref();
+        String currentUrl = pinPage.getCurrentUrl();
         assertTrue(currentUrl.contains(firstPostUrl),
                 "URL страницы поста должен содержать URL превью");
 

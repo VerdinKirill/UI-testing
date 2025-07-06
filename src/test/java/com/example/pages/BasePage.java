@@ -2,6 +2,7 @@ package com.example.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.WebDriver;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -61,5 +62,14 @@ public class BasePage {
         } catch (Exception e) {
             throw new RuntimeException("Failed to create page instance for " + pageClass.getSimpleName(), e);
         }
+    }
+
+    /**
+     * Получает экземпляр WebDriver из Selenide
+     *
+     * @return текущий экземпляр WebDriver
+     */
+    public WebDriver getDriver() {
+        return Selenide.webdriver().driver().getWebDriver();
     }
 }

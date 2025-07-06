@@ -15,55 +15,37 @@ import static com.codeborne.selenide.Selenide.Wait;
 
 public class PinPage extends BasePage {
 
-    // Константы для локаторов
-    private static final String CLOSEUP_CONTAINER_XPATH = "//*[@data-test-id=\"closeup-container\"]";
-    private static final String BACK_BUTTON_ARIA_LABEL = "Назад";
-    private static final String MORE_OPTIONS_ARIA_LABEL = "Другие действия";
-    private static final String IMAGE_ELEMENT_TIMING = "closeup-image-main-MainPinImage";
-    private static final String HIDE_PIN_XPATH = "//*[@data-test-id=\"pin-action-dropdown-hide\"]";
-    private static final String NOT_INTERESTED_XPATH = "//*[@data-test-id=\"hide-reason\"][1]";
-    private static final String UNDO_ACTION_XPATH = "//*[@data-test-id=\"undo-action-btn\"]";
-    private static final String REACT_BUTTON_DATA_TEST_ID = "react-button";
-    private static final String DOWNLOAD_PIN_XPATH = "//*[@data-test-id=\"pin-action-dropdown-download\"]";
-    private static final String SAVE_BUTTON_ARIA_LABEL = "Сохранить";
-    private static final String ALREADY_SAVED_ARIA_LABEL = "Пин сохранен";
-    private static final String CHOOSE_PHOTO_ARIA_LABEL = "Выберите фото.";
-    private static final String PHOTO_UPLOAD_DATA_TEST_ID = "photo-upload-input";
-    private static final String LOADED_IMAGE_ALT = "Фотография";
-    private static final String COMMENT_INPUT_XPATH = "//*[@class='DraftEditor-editorContainer']/div";
-    private static final String SEND_COMMENT_ARIA_LABEL = "Опубликовать";
-
-    private final Button backButton = Button.byAriaLabel(BACK_BUTTON_ARIA_LABEL);
-    private final Button moreOptionsButton = Button.byAriaLabel(MORE_OPTIONS_ARIA_LABEL);
-    private final Image image = Image.byElementTiming(IMAGE_ELEMENT_TIMING);
-    private final Button hidePinButton = Button.byXPath(HIDE_PIN_XPATH);
-    private final Button notInterestedButton = Button.byXPath(NOT_INTERESTED_XPATH);
-    private final Button undoActionButton = Button.byXPath(UNDO_ACTION_XPATH);
-    private final LikeButton likeButton = LikeButton.byDataTestId(REACT_BUTTON_DATA_TEST_ID);
-    private final Button downloadPinButton = Button.byXPath(DOWNLOAD_PIN_XPATH);
-    private final Button saveButton = Button.byAriaLabel(SAVE_BUTTON_ARIA_LABEL);
-    private final Button alreadySavedButton = Button.byAriaLabel(ALREADY_SAVED_ARIA_LABEL);
-    private final Button choosePhotoButton = Button.byAriaLabel(CHOOSE_PHOTO_ARIA_LABEL);
-    private final Input loadPhotoInput = Input.byDataTestId(PHOTO_UPLOAD_DATA_TEST_ID);
-    private final Image loadedImage = Image.byAlt(LOADED_IMAGE_ALT);
-    private final SelenideElement commentTextInput = $x(COMMENT_INPUT_XPATH);
-    private final Button sendCommentButton = Button.byAriaLabel(SEND_COMMENT_ARIA_LABEL);
+    private final Button backButton = Button.byAriaLabel("Назад");
+    private final Button moreOptionsButton = Button.byAriaLabel("Другие действия");
+    private final Image image = Image.byElementTiming("closeup-image-main-MainPinImage");
+    private final Button hidePinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-hide\"]");
+    private final Button notInterestedButton = Button.byXPath("//*[@data-test-id=\"hide-reason\"][1]");
+    private final Button undoActionButton = Button.byXPath("//*[@data-test-id=\"undo-action-btn\"]");
+    private final LikeButton likeButton = LikeButton.byDataTestId("react-button");
+    private final Button downloadPinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-download\"]");
+    private final Button saveButton = Button.byAriaLabel("Сохранить");
+    private final Button alreadySavedButton = Button.byAriaLabel("Пин сохранен");
+    private final Button choosePhotoButton = Button.byAriaLabel("Выберите фото.");
+    private final Input loadPhotoInput = Input.byDataTestId("photo-upload-input");
+    private final Image loadedImage = Image.byAlt("Фотография");
+    private final SelenideElement commentTextInput = $x("//*[@class='DraftEditor-editorContainer']/div");
+    private final Button sendCommentButton = Button.byAriaLabel("Опубликовать");
 
     /**
      * Конструктор страницы пина.
      * Инициализирует страницу с валидационным XPath.
      */
     public PinPage() {
-        super(PinPage.class, CLOSEUP_CONTAINER_XPATH);
+        super(PinPage.class, "//*[@data-test-id=\"closeup-container\"]");
     }
 
     /**
-     * Получает ссылку на изображение пина.
+     * Получает ссылку на эту страницу - изображение пина.
      *
      * @return URL изображения
      */
-    public String getImageHref() {
-        return image.getHref();
+    public String getCurrentUrl() {
+        return getDriver().getCurrentUrl();
     }
 
     /**
