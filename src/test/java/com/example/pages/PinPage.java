@@ -81,6 +81,13 @@ public class PinPage extends BasePage {
     }
 
     /**
+     * Открывает окно загрузки изображения.
+     */
+    public void clickChoosePhotoButton() {
+        choosePhotoButton.click();
+    }
+
+    /**
      * Отмечает пин как "Не интересно".
      */
     public void clickNotInterestedButton() {

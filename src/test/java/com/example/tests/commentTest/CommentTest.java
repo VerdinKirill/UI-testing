@@ -49,10 +49,11 @@ public class CommentTest extends BaseTest {
         pinPage.fillText(COMMENT_TEXT);
 
         // Загрузка изображения
-        pinPage.clickSaveButton();
+        pinPage.clickChoosePhotoButton();
         pinPage.loadPhoto(new File(IMAGE_PATH));
 
         // Отправка комментария
         pinPage.clickSendCommentButton();
+
     }
 }
