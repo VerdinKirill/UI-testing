@@ -6,10 +6,12 @@ import com.example.tests.BaseTest;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static com.codeborne.selenide.Selenide.Wait;
 
 import java.io.File;
+import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Тестовый класс для проверки функциональности комментирования пинов.
@@ -18,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CommentTest extends BaseTest {
     private static final String COMMENT_TEXT = "Классный пост!";
     private static final String IMAGE_PATH = "./testAssets/commentTest.png";
-    private static final String COMMENT_SELECTOR = "//div[contains(text(),'%s')]";
+    private static final Duration COMMENT_UPDATE_TIMEOUT = Duration.ofSeconds(10);
 
     private String login;
     private String password;
@@ -53,7 +55,12 @@ public class CommentTest extends BaseTest {
         pinPage.loadPhoto(new File(IMAGE_PATH));
 
         // Отправка комментария
+        String oldCount = pinPage.getCommentCount();
         pinPage.clickSendCommentButton();
+        Wait().withTimeout(COMMENT_UPDATE_TIMEOUT)
+                .until(d -> !pinPage.getCommentCount().equals(oldCount));
 
+        String newCount = pinPage.getCommentCount();
+        assertNotEquals(oldCount, newCount);
     }
 }

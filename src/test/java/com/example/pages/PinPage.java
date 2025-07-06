@@ -2,7 +2,7 @@ package com.example.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.example.elements.Button.Button;
-import com.example.elements.Image.Image;
+import com.example.elements.H2.H2;
 import com.example.elements.Input.Input;
 import com.example.elements.likebutton.LikeButton;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,9 +26,10 @@ public class PinPage extends BasePage {
     private final Button alreadySavedButton = Button.byAriaLabel("Пин сохранен");
     private final Button choosePhotoButton = Button.byAriaLabel("Выберите фото.");
     private final Input loadPhotoInput = Input.byDataTestId("photo-upload-input");
-    private final Image loadedImage = Image.byAlt("Фотография");
     private final SelenideElement commentTextInput = $x("//*[@class='DraftEditor-editorContainer']/div");
     private final Button sendCommentButton = Button.byAriaLabel("Опубликовать");
+    private final H2 commentCount = H2.byId("comments-heading");
+
 
     /**
      * Конструктор страницы пина.
@@ -163,5 +164,14 @@ public class PinPage extends BasePage {
      */
     public boolean isPostSaved() {
         return alreadySavedButton.isDisplayed();
+    }
+
+    /**
+     * Возвращает кол-во комментариев.
+     *
+     * @return количество комментариев.
+     */
+    public String getCommentCount() {
+        return commentCount.getText();
     }
 }
