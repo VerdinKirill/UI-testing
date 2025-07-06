@@ -6,6 +6,8 @@ import com.example.tests.BaseTest;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * Тестовый класс для проверки функциональности скрытия пинов.
  * Проверяет возможность скрытия пина и отмены этого действия.
@@ -22,13 +24,12 @@ public class HideTest extends BaseTest {
         initTestData();
         MainPage mainPage = auth(login, password);
         String hrefPreview = mainPage.getHrefOfFirstImage();
-        System.out.println(hrefPreview);
         PinPage pinPage = mainPage.clickOnFirstImage(PinPage.class);
         pinPage.waitForPinPageLoad(hrefPreview);
         pinPage.clickMoreOptionsButton();
         pinPage.clickHidePinButton();
-        pinPage.clickNotInterestedButton();
-        pinPage.clickUndoActionButton();
+        mainPage = pinPage.clickNotInterestedButton(MainPage.class);
+        assertTrue(mainPage.undoDisplayed());
     }
 
     /**

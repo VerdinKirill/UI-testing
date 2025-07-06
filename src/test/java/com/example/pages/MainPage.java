@@ -18,7 +18,7 @@ public class MainPage extends BasePage {
     private static final String SEARCH_HEADER_ID = "HeaderContent";
     private static final String SETTINGS_BUTTON_ARIA_LABEL = "Другие варианты";
     private static final String SETTINGS_ARTICLE_XPATH = "//*[@id=\"VerticalNav-MoreOptions-Flyout-item-0\"]/div/a";
-
+    private final Button undoActionButton = Button.byXPath("//*[@data-test-id=\"undo-action-btn\"]");
 
     private final MansoryContainer mansoryContainer = MansoryContainer.byClass(MASONRY_CONTAINER_CLASS);
     private final SearchHeader searchHeader = SearchHeader.byId(SEARCH_HEADER_ID);
@@ -128,6 +128,15 @@ public class MainPage extends BasePage {
     public <T extends BasePage> T clickSettings(Class<T> className) {
         settingsArticle.click();
         return page(className);
+    }
+
+    /**
+     * Проверяет, появилась ли возможность отменить действие скрытия
+     *
+     * @return true или false соответвенно
+     */
+    public boolean undoDisplayed() {
+        return undoActionButton.isDisplayed();
     }
 
 

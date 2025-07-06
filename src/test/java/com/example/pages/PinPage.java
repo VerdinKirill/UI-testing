@@ -19,7 +19,6 @@ public class PinPage extends BasePage {
     private final Button moreOptionsButton = Button.byAriaLabel("Другие действия");
     private final Button hidePinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-hide\"]");
     private final Button notInterestedButton = Button.byXPath("//*[@data-test-id=\"hide-reason\"][1]");
-    private final Button undoActionButton = Button.byXPath("//*[@data-test-id=\"undo-action-btn\"]");
     private final LikeButton likeButton = LikeButton.byDataTestId("react-button");
     private final Button downloadPinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-download\"]");
     private final Button saveButton = Button.byAriaLabel("Сохранить");
@@ -91,19 +90,13 @@ public class PinPage extends BasePage {
     /**
      * Отмечает пин как "Не интересно".
      */
-    public void clickNotInterestedButton() {
+    public <T extends BasePage> T clickNotInterestedButton(Class<T> className) {
         notInterestedButton.click();
+        return page(className);
     }
 
     /**
-     * Отменяет последнее действие с пином.
-     */
-    public void clickUndoActionButton() {
-        undoActionButton.click();
-    }
-
-    /**
-     * Ставит или снимает лайк с пина.
+     * Ставит или снимает лайк с поста.
      */
     public void clickLikeButton() {
         likeButton.click();
