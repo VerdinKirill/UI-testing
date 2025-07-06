@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UploadTest extends BaseTest {
     private String login;
     private String password;
-    private String pathToDownloadDir = "./downloads";
+    private final String pathToDownloadDir = "./downloads";
 
     @Test
     public void checkUpload() {

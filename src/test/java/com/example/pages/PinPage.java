@@ -17,7 +17,6 @@ public class PinPage extends BasePage {
 
     private final Button backButton = Button.byAriaLabel("Назад");
     private final Button moreOptionsButton = Button.byAriaLabel("Другие действия");
-    private final Image image = Image.byElementTiming("closeup-image-main-MainPinImage");
     private final Button hidePinButton = Button.byXPath("//*[@data-test-id=\"pin-action-dropdown-hide\"]");
     private final Button notInterestedButton = Button.byXPath("//*[@data-test-id=\"hide-reason\"][1]");
     private final Button undoActionButton = Button.byXPath("//*[@data-test-id=\"undo-action-btn\"]");
@@ -125,14 +124,6 @@ public class PinPage extends BasePage {
      */
     public void clickSendCommentButton() {
         sendCommentButton.click();
-    }
-
-    /**
-     * Открывает диалог выбора фото.
-     */
-    public void clickChoosePhotoButton() {
-        choosePhotoButton.click();
-        System.out.println(loadedImage.isDisplayed());
     }
 
     /**

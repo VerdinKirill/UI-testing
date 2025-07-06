@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
  * Проверяет возможность скрытия пина и отмены этого действия.
  */
 public class HideTest extends BaseTest {
-    private static final String SEARCH_STR = "Милые котики";
     private String login;
     private String password;
 
