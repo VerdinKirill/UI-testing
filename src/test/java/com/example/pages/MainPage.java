@@ -65,7 +65,7 @@ public class MainPage extends BasePage {
      * Активирует поле поиска.
      */
     public void openSearchBar() {
-        searchHeader.open();
+        searchHeader.openSearchBar();
     }
 
     /**

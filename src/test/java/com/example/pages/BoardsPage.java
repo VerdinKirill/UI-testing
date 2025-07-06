@@ -58,13 +58,4 @@ public class BoardsPage extends BasePage {
         return mansoryContainer.getPreviewName();
     }
 
-    /**
-     * Открывает страницу досок.
-     *
-     * @return экземпляр страницы досок
-     */
-    public static BoardsPage open() {
-        // Логика открытия страницы досок
-        return new BoardsPage();
-    }
 }

@@ -28,7 +28,7 @@ public class SearchHeader extends BaseElement {
     /**
      * Активирует поле поиска, выполняя по нему клик.
      */
-    public void open() {
+    public void openSearchBar() {
         searchInput.click();
     }
 
