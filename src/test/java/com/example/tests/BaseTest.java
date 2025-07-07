@@ -68,6 +68,7 @@ public class BaseTest {
                 "--disable-gpu",
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
+                "--disable-notifications",
                 "--remote-allow-origins=*",
                 "--disable-blink-features=AutomationControlled");
         Configuration.browserCapabilities = options;
